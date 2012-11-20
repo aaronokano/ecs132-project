@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage[labelfont=bf]{caption}
+\usepackage[left=0.75in, top=1in, right=0.75in, bottom=1in]{geometry}
+
+\title{ECS 132 Final Project}  % Declares the document's title.
+\author{Aaron Okano, Anatoly Torchinsky, Justin Maple, Samuel Huang }    % Declares the author's name.
+\date{November 19, 2012}   % Deleting this command produces today's date.
+
+\begin{document}           % End of preamble and beginning of text.
+
+\maketitle                 % Produces the title.
+
+\section{Forest Fire}
+
+In [Cortez and Morais, 2007], the output 'area' was first transformed with a ln(x+1) function. 
+Then, several Data Mining methods were applied. After fitting the models, the outputs were 
+post-processed with the inverse of the ln(x+1) transform. Four different input setups were 
+used. The experiments were conducted using a 10-fold (cross-validation) x 30 runs. Two 
+regression metrics were measured: MAD and RMSE. A Gaussian support vector machine (SVM) fed 
+with only 4 direct weather conditions (temp, RH, wind and rain) obtained the best MAD value: 
+12.71 +- 0.01 (mean and confidence interval within 95% using a t-student distribution). The 
+best RMSE was attained by the naive mean predictor. An analysis to the regression error curve 
+(REC) shows that the SVM model predicts more examples within a lower admitted error. In effect, 
+the SVM model predicts better small fires, which are the majority. Our goal with this data
+is to predict the fire size.
+
+\section{Parkinson's disease}
+
+The dataset was created by Max Little of the University of Oxford, in collaboration with the
+National Centre for Voice and Speech, Denver, Colorado, who recorded the speech signals.
+The original study published the feature extraction methods for general voice disorders.
+
+This dataset is composed of a range of biomedical voice measurements from 31 people, 23 with
+Parkinson's disease (PD). Each column in the table is a particular voice measure, and each row
+corresponds one of 195 voice recording from these individuals ("name" column). The main aim of
+the data is to discriminate healthy people from those with PD, according to "status" column
+which is set to 0 for healthy and 1 for PD.
+
+The data is in ASCII CSV format. The rows of the CSV file contain an instance corresponding to
+one voice recording. There are around six recordings per patient, the name of the patient is
+identified in the first column.For further information or to pass on comments, please contact
+Max Little (littlem '@' robots.ox.ac.uk).
+
+Our goal with this data is to try to monitor patients with Parkinson's disease remotely, by
+simply analyzing their voices on the phone.
+
+\section{Beyond ECS 132}
+
+Probability and statistics are not just applicable to this class, but also to other fields of CS.
+Here are/is research papers written by some members of our CS faculty, in which they make use
+of probability or statistics.
+
+\end{document}             % End of document.
