@@ -14,13 +14,10 @@ areaGrid <- function( data ) {
 
 # Modification of above to show number of fires per location
 frequencyGrid <- function( data ) {
-  # For a general dataset of the same format, since I'm in the mood
   origin <- min( data$X,data$Y )
   maximum <- max( data$X,data$Y )
-  # Generate all possible coordinates. Use various transformations to create a
-  # list of the desired form
   coords <- as.list(as.data.frame(t(expand.grid( origin:maximum, origin:maximum ))))
-  # Create map with mean areas
+  # Create map with fire frequencies
   t(matrix( sapply( coords, 
     function(x) length( data[ which( data$X == x[1] & data$Y == x[2] ), ]$area ) ),
            maximum, maximum ))
