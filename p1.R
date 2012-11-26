@@ -22,3 +22,10 @@ frequencyGrid <- function( data ) {
     function(x) length( data[ which( data$X == x[1] & data$Y == x[2] ), ]$area ) ),
            maximum, maximum ))
 }
+
+data <- read.csv('forestfires.csv',head=TRUE)
+data$month <- factor(data$month,
+    levels=c('jan','feb','mar','apr','may','jun',
+             'jul','aug','sep','oct','nov','dec'))
+data$day <-
+  factor(data$day,levels=c('mon','tue','wed','thu','fri','sat','sun'))
