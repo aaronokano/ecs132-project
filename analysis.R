@@ -132,3 +132,139 @@ y(0.4717,39.8604,0.01148271)
 y(0.4717,39.8604,0.02921095)
 #[1] 0.8369981
 
+////SHIMMER.DB ///
+"
+lm(formula = parkinson$status ~ parkinson$MDVP.Shimmer.dB., 
+    family = binomial)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-2.65929   0.00326   0.34324   0.78365   1.34462  
+
+Coefficients:
+                           Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                  -1.497      0.510  -2.934  0.00334 ** 
+parkinson$MDVP.Shimmer.dB.   12.353      2.681   4.608 4.07e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 217.65  on 194  degrees of freedom
+Residual deviance: 173.49  on 193  degrees of freedom
+AIC: 177.49
+
+Number of Fisher Scoring iterations: 6"
+
+
+mean(parkinson$MDVP.Shimmer.dB.[zero]) 
+0.1629583
+mean(parkinson$MDVP.Shimmer.dB.[one])
+0.3212041
+y(-1.497,12.353,0.1629583)
+0.6262175 #<--- NOT A GOOD VALUE 
+y(-1.497,12.353,0.3212041)
+0.9220717
+
+
+//// HNR ///////
+"
+glm(formula = parkinson$status ~ parkinson$HNR, family = binomial)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.2409   0.1279   0.5052   0.7538   1.4748  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)     7.0326     1.3243   5.310 1.09e-07 ***
+parkinson$HNR  -0.2576     0.0553  -4.658 3.19e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 217.65  on 194  degrees of freedom
+Residual deviance: 187.55  on 193  degrees of freedom
+AIC: 191.55
+
+Number of Fisher Scoring iterations: 5"
+
+mean(parkinson$HNR[zero])
+24.67875
+mean(parkinson$HNR[one])
+20.97405
+y(7.0326,-0.2576,24.67875)
+ 0.662701 #<- NOT GOOD PREDICTOR
+y(7.0326,-0.2576,20.97405)
+ 0.8361264
+
+
+///// RPDE ////
+"
+glm(formula = parkinson$status ~ parkinson$RPDE, family = binomial)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.2648   0.3762   0.5411   0.7802   1.3864  
+
+Coefficients:
+               Estimate Std. Error z value Pr(>|z|)    
+(Intercept)     -2.4316     0.8531  -2.850  0.00437 ** 
+parkinson$RPDE   7.4058     1.8059   4.101 4.12e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 217.65  on 194  degrees of freedom
+Residual deviance: 198.53  on 193  degrees of freedom
+AIC: 202.53
+
+Number of Fisher Scoring iterations: 4"
+
+mean(parkinson$RPDE[zero])
+0.4425519
+mean(parkinson$RPDE[one])
+0.5168159
+y(-2.4316,7.4058, 0.4425519)
+0.699696 #<---- NOT GOOD
+y(-2.4316,7.4058, 0.5168159)
+0.8015222
+
+
+////////// DFA ////////
+
+"
+glm(formula = parkinson$status ~ parkinson$DFA, family = binomial)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0150   0.4386   0.6410   0.7780   1.2959  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)   
+(Intercept)     -6.151      2.291  -2.685  0.00726 **
+parkinson$DFA   10.233      3.248   3.150  0.00163 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 217.65  on 194  degrees of freedom
+Residual deviance: 206.93  on 193  degrees of freedom
+AIC: 210.93
+
+Number of Fisher Scoring iterations: 4"
+
+mean(parkinson$DFA[zero])
+0.6957156
+mean(parkinson$DFA[one])
+0.7254079
+y(-6.151,10.233,0.6957156)
+0.7247721 # <---- NOT GOOD
+y(-6.151,10.233,0.7254079)
+0.7811019 
+
+
+
