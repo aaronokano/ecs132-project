@@ -1,9 +1,157 @@
-#//////// SPREAD1 analysis ///////////
+#//////// INIT PROCESS ////////
 
 parkinson <- read.csv('parkinsons.data', header=TRUE)
 y <- function(x,y,t) {1/(1+exp(-(x+y*t))) }
 zero <- which(parkinson$status == 0)
 one <- which(parkinson$status == 1)
+
+#//////// MDVP.Fo.Hz. ////////
+
+g <- glm(parkinson$status ~ parkinson$MDVP.Fo.Hz., family = binomial)
+summary(g)
+
+str <- "Call:
+glm(formula = parkinson$status ~ parkinson$MDVP.Fo.Hz., family = binomial)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.1740   0.3574   0.4926   0.7070   1.2718  
+
+Coefficients:
+                       Estimate Std. Error z value Pr(>|z|)    
+(Intercept)            4.706084   0.775185   6.071 1.27e-09 ***
+parkinson$MDVP.Fo.Hz. -0.022051   0.004446  -4.960 7.05e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 217.65  on 194  degrees of freedom
+Residual deviance: 189.29  on 193  degrees of freedom
+AIC: 193.29
+
+Number of Fisher Scoring iterations: 4"
+
+mean(parkinson$MDVP.Fo.Hz.[zero])
+#[1] 181.9378
+mean(parkinson$MDVP.Fo.Hz.[one])
+#[1] 145.1808
+
+y(4.706084,-0.022051,181.9378)
+#[1] 0.6668947
+y(4.706084,-0.022051,145.1808)
+#[1] 0.8182747
+
+#//////// MDVP.Fhi.Hz. ////////
+
+g <- glm(parkinson$status ~ parkinson$MDVP.Fhi.Hz., family = binomial)
+summary(g)
+
+str <- "Call:
+glm(formula = parkinson$status ~ parkinson$MDVP.Fhi.Hz., family = binomial)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.8233   0.6365   0.6804   0.7449   1.3084  
+
+Coefficients:
+                        Estimate Std. Error z value Pr(>|z|)    
+(Intercept)             1.871388   0.386236   4.845 1.26e-06 ***
+parkinson$MDVP.Fhi.Hz. -0.003694   0.001670  -2.212    0.027 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 217.65  on 194  degrees of freedom
+Residual deviance: 212.81  on 193  degrees of freedom
+AIC: 216.81
+
+Number of Fisher Scoring iterations: 4"
+
+mean(parkinson$MDVP.Fhi.Hz.[zero])
+#[1] 223.6368
+mean(parkinson$MDVP.Fhi.Hz.[one])
+#[1] 188.4415
+y(1.871388,-0.003694,223.6368)
+#[1] 0.6668947
+y(1.871388,-0.003694,188.4415)
+#[1] 0.8182747
+
+#//////// MDVP.Flo.Hz. ////////
+
+g <- glm(parkinson$status ~ parkinson$MDVP.Flo.Hz., family = binomial)
+summary(g)
+
+str <- "Call:
+glm(formula = parkinson$status ~ parkinson$MDVP.Flo.Hz., family = binomial)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0877   0.4531   0.5451   0.6736   1.3160  
+
+Coefficients:
+                        Estimate Std. Error z value Pr(>|z|)    
+(Intercept)             3.476248   0.536249   6.483 9.02e-11 ***
+parkinson$MDVP.Flo.Hz. -0.019075   0.003937  -4.845 1.27e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 217.65  on 194  degrees of freedom
+Residual deviance: 191.47  on 193  degrees of freedom
+AIC: 195.47
+
+Number of Fisher Scoring iterations: 4"
+
+mean(parkinson$MDVP.Flo.Hz.[zero])
+#[1] 145.2073
+mean(parkinson$MDVP.Flo.Hz.[one])
+#[1] 106.8936
+y(3.476248,-0.019075,145.2073)
+#[1] 0.6696094
+y(3.476248,-0.019075,106.8936)
+#[1] 0.8080288
+
+#//////// MDVP.Jitter.Abs. ////////
+
+g <- glm(parkinson$status ~ parkinson$MDVP.Jitter.Abs., family = binomial)
+summary(g)
+
+str <- "Call:
+glm(formula = parkinson$status ~ parkinson$MDVP.Jitter.Abs., 
+    family = binomial)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-2.92964   0.00099   0.44182   0.81060   1.34642  
+
+Coefficients:
+                             Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                   -1.0556     0.4089  -2.582  0.00983 ** 
+parkinson$MDVP.Jitter.Abs. 66665.3255 13494.8481   4.940 7.81e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 217.65  on 194  degrees of freedom
+Residual deviance: 173.78  on 193  degrees of freedom
+AIC: 177.78
+
+Number of Fisher Scoring iterations: 6"
+
+mean(parkinson$MDVP.Jitter.Abs.[zero])
+#[1] 2.3375e-05
+mean(parkinson$MDVP.Jitter.Abs.[one])
+#[1] 5.068027e-05
+y(-1.0556,66665.3255,2.3375e-05)
+#[1] 0.6230941
+y(-1.0556,66665.3255,5.068027e-05)
+#[1] 0.9107654
+
+#//////// SPREAD1 analysis ///////////
 
 g <- glm(parkinson$status ~ parkinson$spread1, family = binomial)
 summary(g)
