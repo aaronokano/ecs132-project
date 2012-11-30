@@ -1,17 +1,13 @@
 #//////// INIT PROCESS ////////
 
 parkinson <- read.csv('parkinsons.data', header=TRUE)
-y <- function(x,y,t) {1/(1+exp(-(x+y*t))) }
+logit <- function(x,y,t) {1/(1+exp(-(x+y*t))) }
 zero <- which(parkinson$status == 0)
 one <- which(parkinson$status == 1)
 
 #//////// MDVP.Fo.Hz. ////////
 
-g <- glm(parkinson$status ~ parkinson$MDVP.Fo.Hz., family = binomial)
-summary(g)
-
-str <- "Call:
-glm(formula = parkinson$status ~ parkinson$MDVP.Fo.Hz., family = binomial)
+str <- "glm(formula = parkinson$status ~ parkinson$MDVP.Fo.Hz., family = binomial)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
@@ -37,18 +33,14 @@ mean(parkinson$MDVP.Fo.Hz.[zero])
 mean(parkinson$MDVP.Fo.Hz.[one])
 #[1] 145.1808
 
-y(4.706084,-0.022051,181.9378)
-#[1] 0.6668947
-y(4.706084,-0.022051,145.1808)
+logit(4.706084,-0.022051,181.9378)
+#[1] 0.6668947 <- NOT GOOD
+logit(4.706084,-0.022051,145.1808)
 #[1] 0.8182747
 
 #//////// MDVP.Fhi.Hz. ////////
 
-g <- glm(parkinson$status ~ parkinson$MDVP.Fhi.Hz., family = binomial)
-summary(g)
-
-str <- "Call:
-glm(formula = parkinson$status ~ parkinson$MDVP.Fhi.Hz., family = binomial)
+str <- "glm(formula = parkinson$status ~ parkinson$MDVP.Fhi.Hz., family = binomial)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
@@ -73,18 +65,14 @@ mean(parkinson$MDVP.Fhi.Hz.[zero])
 #[1] 223.6368
 mean(parkinson$MDVP.Fhi.Hz.[one])
 #[1] 188.4415
-y(1.871388,-0.003694,223.6368)
-#[1] 0.6668947
-y(1.871388,-0.003694,188.4415)
+logit(1.871388,-0.003694,223.6368)
+#[1] 0.6668947 <- NOT GOOD
+logit(1.871388,-0.003694,188.4415)
 #[1] 0.8182747
 
 #//////// MDVP.Flo.Hz. ////////
 
-g <- glm(parkinson$status ~ parkinson$MDVP.Flo.Hz., family = binomial)
-summary(g)
-
-str <- "Call:
-glm(formula = parkinson$status ~ parkinson$MDVP.Flo.Hz., family = binomial)
+str <- "glm(formula = parkinson$status ~ parkinson$MDVP.Flo.Hz., family = binomial)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
@@ -109,18 +97,14 @@ mean(parkinson$MDVP.Flo.Hz.[zero])
 #[1] 145.2073
 mean(parkinson$MDVP.Flo.Hz.[one])
 #[1] 106.8936
-y(3.476248,-0.019075,145.2073)
-#[1] 0.6696094
-y(3.476248,-0.019075,106.8936)
+logit(3.476248,-0.019075,145.2073)
+#[1] 0.6696094 <- NOT GOOD
+logit(3.476248,-0.019075,106.8936)
 #[1] 0.8080288
 
 #//////// MDVP.Jitter.Abs. ////////
 
-g <- glm(parkinson$status ~ parkinson$MDVP.Jitter.Abs., family = binomial)
-summary(g)
-
-str <- "Call:
-glm(formula = parkinson$status ~ parkinson$MDVP.Jitter.Abs., 
+str <- "glm(formula = parkinson$status ~ parkinson$MDVP.Jitter.Abs., 
     family = binomial)
 
 Deviance Residuals: 
@@ -146,18 +130,14 @@ mean(parkinson$MDVP.Jitter.Abs.[zero])
 #[1] 2.3375e-05
 mean(parkinson$MDVP.Jitter.Abs.[one])
 #[1] 5.068027e-05
-y(-1.0556,66665.3255,2.3375e-05)
-#[1] 0.6230941
-y(-1.0556,66665.3255,5.068027e-05)
+logit(-1.0556,66665.3255,2.3375e-05)
+#[1] 0.6230941 <- NOT GOOD
+logit(-1.0556,66665.3255,5.068027e-05)
 #[1] 0.9107654
 
-#//////// SPREAD1 analysis ///////////
+#//////// spread1 analysis ///////////
 
-g <- glm(parkinson$status ~ parkinson$spread1, family = binomial)
-summary(g)
-
-str <- "Call:
-glm(formula = parkinson$status ~ parkinson$spread1, family = binomial)
+str <- "glm(formula = parkinson$status ~ parkinson$spread1, family = binomial)
 
 Deviance Residuals: 
      Min        1Q    Median        3Q       Max  
@@ -182,15 +162,33 @@ mean(parkinson$spread1[zero])
 #[1] -6.759264
 mean(parkinson$spread1[one])
 #[1] -5.33342
-y(15.8608,2.3966,-6.759246)
+logit(15.8608,2.3966,-6.759246)
 #[1] 0.416196 <--- ALMOST!
-y(15.8608,2.3966,-5.33342)
+logit(15.8608,2.3966,-5.33342)
 #[1] 0.9560066 <---- GREAT VALUE!
 
-#//////// SPREAD2 analysis ///////////
+#//////// spread2 ///////////
 
-g <- glm(parkinson$status ~ parkinson$spread2, family = binomial)
-summary(g)
+str <- "glm(formula = parkinson$status ~ parkinson$spread2, family = binomial)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-2.34813   0.09858   0.42402   0.70699   1.76286  
+
+Coefficients:
+                  Estimate Std. Error z value Pr(>|z|)    
+(Intercept)        -2.4283     0.6196  -3.919 8.89e-05 ***
+parkinson$spread2  17.5354     3.1569   5.555 2.78e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 217.65  on 194  degrees of freedom
+Residual deviance: 170.40  on 193  degrees of freedom
+AIC: 174.4
+
+Number of Fisher Scoring iterations: 5"
 
 mean(parkinson$spread2)
 #[1] 0.2265103
@@ -198,18 +196,14 @@ mean(parkinson$spread2[zero])
 #[1] 0.160292
 mean(parkinson$spread2[one])
 #[1] 0.2481327
-y(-2.4283,17.5354, 0.160292)
+logit(-2.4283,17.5354, 0.160292)
 #[1] 0.5944722
-y(-2.4283,17.5354, 0.5944722)
+logit(-2.4283,17.5354, 0.5944722)
 #[1] 0.9996633
 
-#///////////// PPE ANALYSIS /////////////
+#///////////// PPE /////////////
 
-g <- glm(parkinson$status ~ parkinson$PPE, family = binomial)
-summary(g)
-
-str <- "Call:
-glm(formula = parkinson$status ~ parkinson$PPE, family = binomial)
+str <- "glm(formula = parkinson$status ~ parkinson$PPE, family = binomial)
 
 Deviance Residuals: 
      Min        1Q    Median        3Q       Max  
@@ -237,19 +231,15 @@ mean(parkinson$PPE[zero])
 #[1] 0.1230171
 mean(parkinson$PPE[one])
 #[1] 0.2338282
-y(-4.2214,32.2906,0.1230171)
-#[1] 0.438044
-y(-4.2214,32.2906,0.2338282)
+logit(-4.2214,32.2906,0.1230171)
+#[1] 0.438044 <- ALMOST
+logit(-4.2214,32.2906,0.2338282)
 #[1] 0.9654122
 
 
-#/////////// NHR ANALYSIS //////////
+#/////////// NHR //////////
 
-g <- glm(parkinson$status ~ parkinson$NHR, family = binomial)
-summary(g)
-
-str <- "Call:
-glm(formula = parkinson$status ~ parkinson$NHR, family = binomial)
+str <- "glm(formula = parkinson$status ~ parkinson$NHR, family = binomial)
 
 Deviance Residuals: 
      Min        1Q    Median        3Q       Max  
@@ -275,14 +265,14 @@ mean(parkinson$NHR[zero])
 #[1] 0.01148271
 mean(parkinson$NHR[one])
 #[1] 0.02921095
-y(0.4717,39.8604,0.01148271)
-#[1] 0.7169546
-y(0.4717,39.8604,0.02921095)
+logit(0.4717,39.8604,0.01148271)
+#[1] 0.7169546 <- NOT GOOD
+logit(0.4717,39.8604,0.02921095)
 #[1] 0.8369981
 
-////SHIMMER.DB ///
-"
-lm(formula = parkinson$status ~ parkinson$MDVP.Shimmer.dB., 
+#////MDVP.Shimmer.dB ///
+
+str <- "glm(formula = parkinson$status ~ parkinson$MDVP.Shimmer.dB., 
     family = binomial)
 
 Deviance Residuals: 
@@ -306,18 +296,16 @@ Number of Fisher Scoring iterations: 6"
 
 
 mean(parkinson$MDVP.Shimmer.dB.[zero]) 
-0.1629583
+#[1] 0.1629583
 mean(parkinson$MDVP.Shimmer.dB.[one])
-0.3212041
-y(-1.497,12.353,0.1629583)
-0.6262175 #<--- NOT A GOOD VALUE 
-y(-1.497,12.353,0.3212041)
-0.9220717
+#[1] 0.3212041
+logit(-1.497,12.353,0.1629583)
+#[1] 0.6262175 <- NOT GOOD
+logit(-1.497,12.353,0.3212041)
+#[1] 0.9220717
 
-
-//// HNR ///////
-"
-glm(formula = parkinson$status ~ parkinson$HNR, family = binomial)
+#//// HNR ///////
+str <- "glm(formula = parkinson$status ~ parkinson$HNR, family = binomial)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
@@ -339,18 +327,18 @@ AIC: 191.55
 Number of Fisher Scoring iterations: 5"
 
 mean(parkinson$HNR[zero])
-24.67875
+#[1] 24.67875
 mean(parkinson$HNR[one])
-20.97405
-y(7.0326,-0.2576,24.67875)
- 0.662701 #<- NOT GOOD PREDICTOR
-y(7.0326,-0.2576,20.97405)
- 0.8361264
+#[1] 20.97405
+logit(7.0326,-0.2576,24.67875)
+#[1]  0.662701 <- NOT GOOD
+logit(7.0326,-0.2576,20.97405)
+#[1] 0.8361264
 
 
-///// RPDE ////
-"
-glm(formula = parkinson$status ~ parkinson$RPDE, family = binomial)
+#///// RPDE ////
+
+str <- "glm(formula = parkinson$status ~ parkinson$RPDE, family = binomial)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
@@ -372,19 +360,18 @@ AIC: 202.53
 Number of Fisher Scoring iterations: 4"
 
 mean(parkinson$RPDE[zero])
-0.4425519
+#0.4425519
 mean(parkinson$RPDE[one])
-0.5168159
-y(-2.4316,7.4058, 0.4425519)
-0.699696 #<---- NOT GOOD
-y(-2.4316,7.4058, 0.5168159)
-0.8015222
+#0.5168159
+logit(-2.4316,7.4058, 0.4425519)
+#0.699696 #<---- NOT GOOD
+logit(-2.4316,7.4058, 0.5168159)
+#0.8015222
 
 
-////////// DFA ////////
+#////////// DFA ////////
 
-"
-glm(formula = parkinson$status ~ parkinson$DFA, family = binomial)
+str <- "glm(formula = parkinson$status ~ parkinson$DFA, family = binomial)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
@@ -406,13 +393,10 @@ AIC: 210.93
 Number of Fisher Scoring iterations: 4"
 
 mean(parkinson$DFA[zero])
-0.6957156
+#[1] 0.6957156
 mean(parkinson$DFA[one])
-0.7254079
-y(-6.151,10.233,0.6957156)
-0.7247721 # <---- NOT GOOD
-y(-6.151,10.233,0.7254079)
-0.7811019 
-
-
-
+#[1] 0.7254079
+logit(-6.151,10.233,0.6957156)
+#[1] 0.7247721 <- NOT GOOD
+logit(-6.151,10.233,0.7254079)
+#[1] 0.7811019 
