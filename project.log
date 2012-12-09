@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.3.14)  19 NOV 2012 16:49
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.3.14)  8 DEC 2012 16:27
 entering extended mode
 **project.tex
 (C:\Users\SCH\Documents\git\ecs132-project\project.tex
@@ -310,24 +310,25 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 17.
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
 (C:\Users\SCH\Documents\git\ecs132-project\project.aux) ) 
 Here is how much of TeX's memory you used:
- 4920 strings out of 494045
- 70713 string characters out of 3145975
- 133225 words of memory out of 3000000
- 8172 multiletter control sequences out of 15000+200000
- 9189 words of font info for 35 fonts, out of 3000000 for 9000
+ 4930 strings out of 494045
+ 70819 string characters out of 3145975
+ 135225 words of memory out of 3000000
+ 8180 multiletter control sequences out of 15000+200000
+ 10888 words of font info for 43 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 36i,6n,43p,257b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,6n,43p,1007b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86
 )/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on project.pdf (1 page, 62275 bytes).
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on project.pdf (2 pages, 75814 bytes).
 PDF statistics:
- 22 PDF objects out of 1000 (max. 8388607)
+ 29 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
