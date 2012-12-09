@@ -12,6 +12,17 @@ areaGrid <- function( data ) {
            maximum, maximum ))
 }
 
+# Modification to show mean temperature per location
+tempGrid <- function( data ) {
+  origin <- min( data$X,data$Y )
+  maximum <- max( data$X,data$Y )
+  coords <- as.list(as.data.frame(t(expand.grid( origin:maximum, origin:maximum ))))
+  # Create map with mean temperature
+  t(matrix( sapply( coords, 
+    function(x) mean( data[ which( data$X == x[1] & data$Y == x[2] ), ]$temp ) ),
+           maximum, maximum ))
+}
+
 # Modification of above to show number of fires per location
 frequencyGrid <- function( data ) {
   origin <- min( data$X,data$Y )
@@ -21,6 +32,16 @@ frequencyGrid <- function( data ) {
   t(matrix( sapply( coords, 
     function(x) length( data[ which( data$X == x[1] & data$Y == x[2] ), ]$area ) ),
            maximum, maximum ))
+}
+
+# Find the mean area for each unique entry in dataVector, e.g. the mean area
+# for each value of DC would be found with meanArea( data, data$DC ).
+# Returns a matrix where the first column is the value in the vector and the
+# second is the mean area for that value.
+meanArea <- function( data, dataVector ) {
+  uniques <- unique( dataVector )
+  cbind( uniques, lapply( uniques, function(x) 
+                         mean( data[dataVector == x,]$area ) ) )
 }
 
 data <- read.csv('forestfires.csv',head=TRUE)

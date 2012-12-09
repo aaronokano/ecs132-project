@@ -2,8 +2,41 @@
 
 parkinson <- read.csv('parkinsons.data', header=TRUE)
 logit <- function(x,y,t) {1/(1+exp(-(x+y*t))) }
+logit2 <- function(x,y,z,t1,t2) {1/(1+exp(-(x+y*t1+z*t2))) }
+logit3 <- function(x,y,z,w,t1,t2,t3) {1/(1+exp(-(x+y*t1+z*t2 + w*t3))) }
 zero <- which(parkinson$status == 0)
 one <- which(parkinson$status == 1)
+crossvalglm <- function( response, predictor, predictor2, predictor3 ) {
+  v <- sample( 1:(length(response) - 1), (length( response ) - 1) * 0.5 )
+  notv <- setdiff( 1:(length(response) - 1), v )
+  model <- glm( response[v] ~ predictor[v] + predictor2[v] + predictor3[v], family = binomial )
+  cor( response[notv], mapply( logit3, model$coefficients[1], model$coefficients[2],
+                              model$coefficients[3], model$coefficients[4], predictor[notv],
+                              predictor2[notv], predictor3[notv]) )^2
+}
+
+crossvalglm2 <- function( response, predictor, predictor2 ) {
+  v <- sample( 1:(length(response) - 1), (length( response ) - 1) * 0.5 )
+  notv <- setdiff( 1:(length(response) - 1), v )
+  model <- glm( response[v] ~ predictor[v] + predictor2[v], family = binomial )
+  cor( response[notv], mapply( logit2, model$coefficients[1], model$coefficients[2],
+                              model$coefficients[3], predictor[notv],
+                              predictor2[notv]) )^2
+}
+
+crossvalglm3 <- function( response, predictor ) {
+  v <- sample( 1:(length(response) - 1), (length( response ) - 1) * 0.5 )
+  notv <- setdiff( 1:(length(response) - 1), v )
+  model <- glm( response[v] ~ predictor[v], family = binomial )
+  cor( response[notv], mapply( logit, model$coefficients[1], model$coefficients[2],
+                              predictor[notv]
+                              ) )^2
+}
+
+mean( sapply( 1:1000, function(n) crossvalglm2( parkinson$status,
+                                               parkinson$PPE, parkinson$DFA *
+                                               parkinson$RPDE) ) )
+
 
 #//////// MDVP.Fo.Hz. ////////
 
