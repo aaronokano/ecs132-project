@@ -44,6 +44,37 @@ meanArea <- function( data, dataVector ) {
                          mean( data[dataVector == x,]$area ) ) )
 }
 
+genCond <- function( v ) {
+  sorted <- sort( v )
+  s <- split( sorted, ceiling( seq( length(v) ) /  (length(v)/4) ) )
+  cbind( v >= head(s$'1', n=1) & v <= tail(s$'1', n=1),
+         v >= head(s$'2', n=1) & v <= tail(s$'2', n=1),
+         v >= head(s$'3', n=1) & v <= tail(s$'3', n=1),
+         v >= head(s$'4', n=1) & v <= tail(s$'4', n=1))
+}
+
+# Mean area based on conditions
+meanConds <- function(data, conditions, v) {
+  mean( data[ !apply( conditions, 1, function(x)
+                     any(!x[cbind(v,1:length(x[1,]))])), ]$area )
+}
+
+# Makes condition arrays using list of variables to form conditions on
+makeConds <- function( variables ) {
+  m <- lapply( variables, genCond )
+  array( unlist( m ), dim = c(dim(m[[1]]),length(m)))
+}
+
+#conds <- makeConds( data[,5:11] )
+#perms <- data.matrix( expand.grid( rep( list(1:4), 7 ) ) )
+#means <- apply( perms, 1, function(x) meanConds( data, conds, x ) )
+#table <- cbind( perms, means )
+#table <- table[complete.cases(table),]
+#table <- table[order(table[,8]),]
+#mapply( function(x,y,n) mean( table[ table[,8] > x & table[,8] <= y, ][,n] ),
+#       0, 4.4, 1:7 )
+                       
+
 data <- read.csv('forestfires.csv',head=TRUE)
 data$month <- factor(data$month,
     levels=c('jan','feb','mar','apr','may','jun',
