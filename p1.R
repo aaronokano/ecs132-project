@@ -46,11 +46,10 @@ meanArea <- function( data, dataVector ) {
 
 genCond <- function( v ) {
   sorted <- sort( v )
-  s <- split( sorted, ceiling( seq( length(v) ) /  (length(v)/4) ) )
+  s <- split( sorted, ceiling( seq( length(v) ) /  (length(v)/3) ) )
   cbind( v >= head(s$'1', n=1) & v <= tail(s$'1', n=1),
          v >= head(s$'2', n=1) & v <= tail(s$'2', n=1),
-         v >= head(s$'3', n=1) & v <= tail(s$'3', n=1),
-         v >= head(s$'4', n=1) & v <= tail(s$'4', n=1))
+         v >= head(s$'3', n=1) & v <= tail(s$'3', n=1))
 }
 
 # Mean area based on conditions
@@ -75,7 +74,6 @@ makeConds <- function( variables ) {
 #       0, 4.4, 1:7 )
                        
 
-#ordata <- data[order(data$area),][250:400,]
 #model <- lm( log( area + 1 ) ~ month + temp + RH + DC + month:RH, data=ordata)
 
 
@@ -115,3 +113,9 @@ data$month <- factor(data$month,
              'jul','aug','sep','oct','nov','dec'))
 data$day <-
   factor(data$day,levels=c('mon','tue','wed','thu','fri','sat','sun'))
+data$month <- sin( as.integer( data$month ) * pi / 6 )
+data$day <- sin( as.integer( data$day ) * 2 * pi / 7 )
+ordata <- data[order(data$area),][248:400,]
+ordata2 <- data[order(data$area),][248:448,]
+ordata2$area <- log( ordata2$area + 1 )
+
