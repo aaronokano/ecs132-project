@@ -45,6 +45,11 @@ crossvalglm3 <- function( response, predictor ) {
 # Generalized glm cross validation. Takes as input a data frame where the first
 # column is status and the remaining columns are predictors. Returns proportion
 # of successful predictions.
+# Call the function with cvglmprop( parkinson[,c("status","var1","var2",...)])
+# If you want to add interaction terms, perform the multiplication beforehand:
+# temp <- parkinson[,c("status","var1","var2")]
+# temp$v1v2 <- temp$var1 * temp$var2
+# cvglmprop( temp )
 cvglmprop <- function( variables ) {
   v <- sample( 1:(nrow(variables) - 1), (nrow( variables ) - 1) * 0.5 )
   notv <- setdiff( 1:(nrow(variables) - 1), v )
