@@ -1,4 +1,8 @@
 parkinson <- read.csv('parkinsons.data', header=TRUE)
+
+# Generalized logit function. Inputs are the input variables (the t's in the
+# book) and the coefficients (the betas in the book). Both inputs are in vector
+# form. Naturally, the vector t should have one less element than the vector b.
 logit <- function(t,b) {1/(1+exp(-(b %*% c(1,t)))) }
 crossvalglm <- function( response, predictor, predictor2, predictor3 ) {
   v <- sample( 1:(length(response) - 1), (length( response ) - 1) * 0.5 )
