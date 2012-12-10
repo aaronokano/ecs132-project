@@ -75,6 +75,40 @@ makeConds <- function( variables ) {
 #       0, 4.4, 1:7 )
                        
 
+#ordata <- data[order(data$area),][250:400,]
+#model <- lm( log( area + 1 ) ~ month + temp + RH + DC + month:RH, data=ordata)
+
+
+#> summary( lm( area ~ FFMC + ISI + ISI:FFMC + DC + DC:ISI + month, data=ordata
+#              > ) )
+#
+#Call:
+#lm(formula = area ~ FFMC + ISI + ISI:FFMC + DC + DC:ISI + month, 
+#       data = ordata)
+#
+#Residuals:
+#   Min     1Q Median     3Q    Max 
+#-3.353 -1.556 -0.476  1.118  4.743 
+#
+#Coefficients:
+#              Estimate Std. Error t value Pr(>|t|)   
+#(Intercept) 18.7922107  8.5250001   2.204  0.02909 * 
+#FFMC        -0.2123159  0.1031263  -2.059  0.04132 * 
+#ISI         -2.1986055  1.3395298  -1.641  0.10291   
+#DC           0.0103264  0.0031436   3.285  0.00128 **
+#month        2.6778341  0.8689659   3.082  0.00247 **
+#FFMC:ISI     0.0258508  0.0146401   1.766  0.07956 . 
+#ISI:DC      -0.0004180  0.0002632  -1.588  0.11442   
+#---
+#Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+#
+#Residual standard error: 2.007 on 144 degrees of freedom
+#Multiple R-squared: 0.1142, Adjusted R-squared: 0.0773 
+#F-statistic: 3.094 on 6 and 144 DF,  p-value: 0.007022 
+
+
+
+
 data <- read.csv('forestfires.csv',head=TRUE)
 data$month <- factor(data$month,
     levels=c('jan','feb','mar','apr','may','jun',
