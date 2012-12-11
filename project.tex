@@ -8,60 +8,209 @@
 \usepackage[labelfont=bf]{caption}
 \usepackage[left=0.75in, top=1in, right=0.75in, bottom=1in]{geometry}
 
+\lstset{
+  language=R,                % the language of the code
+  numbers=left,                   % where to put the line-numbers
+  frame=single,                   % adds a frame around the code
+  title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+}
+
 \title{ECS 132 Final Project}  % Declares the document's title.
 \author{Aaron Okano, Anatoly Torchinsky, Justin Maple, Samuel Huang }    % Declares the author's name.
-\date{November 19, 2012}   % Deleting this command produces today's date.
+\date{December 10, 2012}   % Deleting this command produces today's date.
 
 \begin{document}           % End of preamble and beginning of text.
 
 \maketitle                 % Produces the title.
 
+
+%--------------------
+
 \section{Forest Fire}
 
 In [Cortez and Morais, 2007], the output 'area' was first transformed with a ln(x+1) function. 
-Then, several Data Mining methods were applied. After fitting the models, the outputs were 
-post-processed with the inverse of the ln(x+1) transform. Four different input setups were 
-used. The experiments were conducted using a 10-fold (cross-validation) x 30 runs. Two 
-regression metrics were measured: MAD and RMSE. A Gaussian support vector machine (SVM) fed 
-with only 4 direct weather conditions (temp, RH, wind and rain) obtained the best MAD value: 
-12.71 +- 0.01 (mean and confidence interval within 95% using a t-student distribution). The 
-best RMSE was attained by the naive mean predictor. An analysis to the regression error curve 
-(REC) shows that the SVM model predicts more examples within a lower admitted error. In effect, 
-the SVM model predicts better small fires, which are the majority. Our goal with this data
-is to predict the fire size.
+Then, several Data Mining methods were applied to produce the data set of interest. Our goal with
+this data is to predict the fire size given the data set.
+
+\subsection{Which data matters?}
+
+Initially, doing variations and correlations between predictor variables and the response
+variable resulted in abnormally low values. This led us to consider what the forest looked like.
+We did this by creating a \verb+frequencyGrid+ and \verb+areaGrid+ that corresponds to each
+of X,Y coordinates that exist. The data shown was below:
+
+\begin{verbatim}
+> frequencyGrid(data)
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
+ [1,]    0    0    0    0    0    0    0    0    0
+ [2,]   19   25    0    0    0    0    0    0    0
+ [3,]   10    1    1   22    0   25    2    3    0
+ [4,]   15   27   43   36   23    9   45    1    4
+ [5,]    4   20    7   25    3   49   11    4    2
+ [6,]    0    0    4    8    4    3    2   52    1
+ [7,]    0    0    0    0    0    0    0    0    0
+ [8,]    0    0    0    0    0    0    0    1    0
+ [9,]    0    0    0    0    0    0    0    0    6
+
+> areaGrid(data)
+          [,1]    [,2]      [,3]      [,4]     [,5]      [,6]      [,7]      [,8]      [,9]
+ [1,]      NaN     NaN       NaN       NaN      NaN       NaN       NaN       NaN       NaN
+ [2,] 11.57579 18.5060       NaN       NaN      NaN       NaN       NaN       NaN       NaN
+ [3,] 15.71400  0.0000 6.5800000  7.858182      NaN  7.711200 13.675000   8.77000       NaN
+ [4,] 10.01867  5.3100 2.9383721 11.039722 3.206522 16.052222 10.541556  12.18000   46.4025
+ [5,] 28.86750  4.6315 0.3114286 11.480400 0.000000 28.245918  7.035455   0.73250    4.0800
+ [6,]      NaN     NaN 0.0000000 10.966250 4.405000  2.863333 43.225000  24.33269   42.8700
+ [7,]      NaN     NaN       NaN       NaN      NaN       NaN       NaN       NaN       NaN
+ [8,]      NaN     NaN       NaN       NaN      NaN       NaN       NaN 185.76000       NaN
+ [9,]      NaN     NaN       NaN       NaN      NaN       NaN       NaN       NaN    0.7450
+\end{verbatim}
+
+\verb+frequencyGrid+ and \verb+areaGrid+ reveal several trends about the forest:
+
+\begin{enumerate}
+	\item $\approx 44\%$ of the forest locations never had a fire
+	\item Locations with many fires usually have small mean areas
+	\item Locations with few fires usually have large mean areas
+\end{enumerate}
+
+These trends suggested that certain parts of the data set were irrelevant to our prediction of
+fire area. In order to predict fire size in the places that actually had fires, we decided to
+ignore data that had particular X,Y coordinates with a mean area of NaN or frequency of 0.
+
+\subsection{Predictor Selection 1}
+
+Backwards step-wise approach
+
+\subsection{Predictor Selection 2}
+
+
+\subsection{Final predictor set}
+
+After testing various predictor selection methods, we came up with the following predictor set:
+\begin{itemize}
+	\item FFMC
+	\item ISI
+	\item DMC
+	\item Month
+	\item DC
+	\item DC:ISI
+	\item DMC:FFMC
+\end{itemize}
+
+\subsection{Cross validation}
+
+to be filled...
+
+%--------------------
 
 \section{Parkinson's disease}
 
 The dataset was created by Max Little of the University of Oxford, in collaboration with the
-National Centre for Voice and Speech, Denver, Colorado, who recorded the speech signals.
-The original study published the feature extraction methods for general voice disorders.
+National Centre for Voice and Speech, Denver, Colorado, who recorded the speech signals. The
+main aim of the data is to discriminate healthy people from those with PD, according to
+"status" column which is set to 0 for healthy and 1 for PD. Our goal with this data is to
+try to monitor patients with Parkinson's disease remotely, by simply analyzing their voices
+on the phone.
 
-This dataset is composed of a range of biomedical voice measurements from 31 people, 23 with
-Parkinson's disease (PD). Each column in the table is a particular voice measure, and each row
-corresponds one of 195 voice recording from these individuals ("name" column). The main aim of
-the data is to discriminate healthy people from those with PD, according to "status" column
-which is set to 0 for healthy and 1 for PD.
+\subsection{Predictor Selection 1}
 
-The data is in ASCII CSV format. The rows of the CSV file contain an instance corresponding to
-one voice recording. There are around six recordings per patient, the name of the patient is
-identified in the first column.For further information or to pass on comments, please contact
-Max Little (littlem '@' robots.ox.ac.uk).
+We used the following:
 
-Our goal with this data is to try to monitor patients with Parkinson's disease remotely, by
-simply analyzing their voices on the phone.
+\begin{equation}
+\label{logit2}
+m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(\beta_0+\beta_1
+t_1+...+\beta_r t_r)}}
+\end{equation}
 
-\pagebreak
+\begin{tabular}{l|c|c|r}
+predictor & class 0 & class 1 & Comments \\
+\hline
+spread1 & 0.4 & 0.9 & Good! \\
+PPE & 0.4 & 0.9 & Good! \\
+\end{tabular}
+
+\subsection{Predictor Selection 2}
+
+\subsection{Final predictor set}
+
+After testing various predictor selection methods, we came up with the following predictor set:
+\begin{itemize}
+	\item spread1
+	\item PPE
+\end{itemize}
+
+\subsection{Cross validation}
+
+to be filled...
+
+%--------------------
 
 \section{Beyond ECS 132}
 
-Professor Devanbu's paper, "Clones: What is that smell?" assesses the validity of the "stink" that surrounds clones.  This reputation stems from the long standing belief that clone's require more project maintenance, as well as their tendency to create code bloat. One of the major problems that people face with software life cycles is maintenance costs, which can require around 80\% of the total cost. As a result, Devanbu and others have invested time in research to minimize maintenance costs. One of the simplest ways to lower these costs involves reducing defects in code. Three tests were structured to analyze the relationship between clones and bugs. The first test determines the bug rate of cloned code; the second test compares the bug rate in cloned code to that of regular code; and the last test checks if prolific clone groups are buggier than the non-prolific clone groups. The results and conclusions of each test were formulated using statistical computation and analysis.
+Professor Devanbu's paper, "Clones: What is that smell?" assesses the validity of the "stink"
+that surrounds clones.  This reputation stems from the long standing belief that clone's require
+more project maintenance, as well as their tendency to create code bloat. One of the major
+problems that people face with software life cycles is maintenance costs, which can require
+around 80\% of the total cost. As a result, Devanbu and others have invested time in research
+to minimize maintenance costs. One of the simplest ways to lower these costs involves
+reducing defects in code. Three tests were structured to analyze the relationship between
+clones and bugs. The first test determines the bug rate of cloned code; the second test
+compares the bug rate in cloned code to that of regular code; and the last test checks
+if prolific clone groups are buggier than the non-prolific clone groups. The results and
+conclusions of each test were formulated using statistical computation and analysis.
 
-The first test was an attempt to discover to what extent cloned code contributed to bugs. The graph plots the cumulative bug convergence on the Y-axis against the clone ratio on the X-axis. According the vertical line, which represents the average clone ratio across all snapshots, both of the projects had that about 80\% of bugs have a lower clone ratio than the overall project clone ratio. The test shows that in each case the bugs contained little cloned code.
+The first test was an attempt to discover to what extent cloned code contributed to bugs.
+The graph plots the cumulative bug convergence on the Y-axis against the clone ratio on the
+X-axis. According the vertical line, which represents the average clone ratio across all
+snapshots, both of the projects had that about 80\% of bugs have a lower clone ratio than
+the overall project clone ratio. The test shows that in each case the bugs contained little
+cloned code.
 
-The second test finds whether clones occur more often in buggy code than elsewhere. A box and whisker plot simply illustrates for all four projects that buggy code had a lower clone ratio. This provides strong evidence that clones are not a large contributor of bugs. To further support this claim, a second table displays the adjusted $p$ values in which a Wilcoxon paired test is used as the null hypothesis and the alternative hypothesis is set to "snapshot clone ratio $>$ bug clone ratio". Since the $p$ values shown are between 0.01 and 0.05, this provides moderate evidence against the null hypothesis in favor of the alternative hypothesis. In each of the four projects, clones were not a major source of bugs. This suggests that clones are less buggy than regular code.
+The second test finds whether clones occur more often in buggy code than elsewhere. A box
+and whisker plot simply illustrates for all four projects that buggy code had a lower clone
+ratio. This provides strong evidence that clones are not a large contributor of bugs. To
+further support this claim, a second table displays the adjusted $p$ values in which a Wilcoxon
+paired test is used as the null hypothesis and the alternative hypothesis is set to "snapshot
+clone ratio $>$ bug clone ratio". Since the $p$ values shown are between 0.01 and 0.05, this
+provides moderate evidence against the null hypothesis in favor of the alternative hypothesis.
+In each of the four projects, clones were not a major source of bugs. This suggests that clones
+are less buggy than regular code.
 
-The third test assesses whether prolific clone groups are buggier than non-prolific clone groups. This was accomplished by finding the defect density in prolific clone groups and comparing it to those found in non-prolific clone groups. Figure 2 utilizes the resulting data in a box and whisker plot. The graph shows that in each case the bug density in prolific clone groups is lower than that of the non-prolific clone group. In addition, table three utilizes a Wilcoxon test with the alternative hypothesis set to "defect density in non-prolific groups $>$ defect density of prolific group" provides $p$ values that are below 0.5. These $p$ values reject the null hypothesis in favor of the alternative, providing evidence in that more prolific clone groups are less buggy than non-prolific clone groups.
+The third test assesses whether prolific clone groups are buggier than non-prolific clone groups.
+This was accomplished by finding the defect density in prolific clone groups and comparing it to
+those found in non-prolific clone groups. Figure 2 utilizes the resulting data in a box and whisker
+plot. The graph shows that in each case the bug density in prolific clone groups is lower than that
+of the non-prolific clone group. In addition, table three utilizes a Wilcoxon test with the alternative
+hypothesis set to "defect density in non-prolific groups $>$ defect density of prolific group" provides
+$p$ values that are below 0.5. These $p$ values reject the null hypothesis in favor of the alternative,
+providing evidence in that more prolific clone groups are less buggy than non-prolific clone groups.
 
-In each of the three tests, the clones were falsely attributed to a bad trait. Since the four projects used were medium to large open source projects, this data should be applicable in most situations. One area of contention over these results is how cloned code is identified. To address this issue, the tests were applied to two separate data sets. The first data set uses a conservative clone detector, while the second employs a more liberal one. Both detectors require 50 tokens in length to consider a code segment to be cloned, but the liberal detector allows for 1\% less similarity than that of the conservative detector. Since analyzing both data sets led to the same conclusion, the difference in detection methods is negligible. Ultimately, the evidence from each test shows that clones may have unfairly garnered a bad reputation.
+In each of the three tests, the clones were falsely attributed to a bad trait. Since the four
+projects used were medium to large open source projects, this data should be applicable
+in most situations. One area of contention over these results is how cloned code is identified.
+To address this issue, the tests were applied to two separate data sets. The first data set
+uses a conservative clone detector, while the second employs a more liberal one. Both detectors
+require 50 tokens in length to consider a code segment to be cloned, but the liberal detector
+allows for 1\% less similarity than that of the conservative detector. Since analyzing both
+data sets led to the same conclusion, the difference in detection methods is negligible. Ultimately,
+the evidence from each test shows that clones may have unfairly garnered a bad reputation.
+
+\pagebreak
+
+\appendix
+\section{Code}
+\subsection{Problem 1}
+\lstinputlisting[caption=Analysis for Forest Fire Data Set]{p1.R}
+\subsection{Problem 2}
+\lstinputlisting[caption=Analysis for Parkinson's Data Set]{p2.R}
+
+\section{Who did what}
+\begin{itemize}
+	\item Aaron - implemented R functions for Problem 1 and 2 and did initial analysis
+	\item Anatoly - assisted Aaron in development of Problem 1 and 2 code; used code to generate plots
+	\item Justin - used Devanbu's article to finish Problem 3
+	\item Samuel - wrote R to do initial analysis, copy-edited Problem 3 and did write-up for Problem 1 and 2
+\end{itemize}
 
 \end{document}             % End of document.
