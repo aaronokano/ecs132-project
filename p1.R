@@ -64,6 +64,16 @@ makeConds <- function( variables ) {
   array( unlist( m ), dim = c(dim(m[[1]]),length(m)))
 }
 
+linear <- function(t,b) { b%*%c(1,t) }
+
+cvlm <- function( variables, ntest ) {
+  v <- sample( 1:nrow(variables), ntest )
+  model <- lm( area ~ ., variables[v,] )
+  cbind( apply( as.matrix( variables[-v,-1] ), 1, linear, model$coefficients
+                 ), variables[-v,1] )
+}
+
+
 #conds <- makeConds( data[,5:11] )
 #perms <- data.matrix( expand.grid( rep( list(1:4), 7 ) ) )
 #means <- apply( perms, 1, function(x) meanConds( data, conds, x ) )
@@ -156,8 +166,8 @@ data$month <- factor(data$month,
              'jul','aug','sep','oct','nov','dec'))
 data$day <-
   factor(data$day,levels=c('mon','tue','wed','thu','fri','sat','sun'))
-data$month <- sin( as.integer( data$month ) * pi / 6 )
-data$day <- sin( as.integer( data$day ) * 2 * pi / 7 )
+#data$month <- sin( as.integer( data$month ) * pi / 6 )
+#data$day <- sin( as.integer( data$day ) * 2 * pi / 7 )
 ordata <- data[order(data$area),][248:400,]
 ordata2 <- data[order(data$area),][248:448,]
 ordata2$area <- log( ordata2$area + 1 )
