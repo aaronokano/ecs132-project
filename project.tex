@@ -150,6 +150,29 @@ Backwards step-wise approach
 
 \subsection{Predictor Selection 2}
 
+For the second predictor set we decided to use the attributes that are part of the Fire Weather Index (FWI) such as FFMC, DMC, DC and ISI. 
+Before we eliminated part of the data these values did now have a good $R^{2}$ value compared to the other meteorological data such as temperature, wind, humidity and rain. 
+However, once we eliminated the data the attributes that are part of FWI gave us a far better $R^{2}$ value than the other meteorological variables. 
+Using forward step-wise we started with FWI attributes, then we tested out different interaction terms between FWI attributes and found that $DMC \times FMC$  and $DC \times ISI$ greatly increased the $R^{2}$ of our regression.The only non FWI attribute we decided to go with was month because we saw a strong correlation between the months and the area.
+
+\begin{align*}
+  \widehat{m}_{area;FFMC,ISI,DC,month,DMC}(t) = &-23.1151201 - 0.2744283 \cdot t_1 + 0.3185786 \cdot t_2 \\
+  &+ 0.0122545 \cdot t_3 + 2.5926093 \cdot t_4 \\
+  &- 0.2495317 \cdot t_5 - 0.0006686 \cdot t_2 \cdot t_3 + 0.0027410 \cdot t_1 \cdot t_5 	   
+\end{align*}
+which is obtained from the output of \verb=lm=.
+
+\begin{verbatim}
+              		Estimate Std. Error t value Pr(>|t|)    
+		(Intercept) 23.1151201  9.0213988   2.562 0.011419 *  
+		FFMC        -0.2744283  0.1118159  -2.454 0.015301 *  
+		ISI          0.3185786  0.1871206   1.703 0.090799 .  
+		DC           0.0122545  0.0035439   3.458 0.000715 ***
+		month        2.5926093  0.8779764   2.953 0.003673 ** 
+		DMC         -0.2495317  0.1012981  -2.463 0.014935 *  
+		ISI:DC      -0.0006686  0.0002937  -2.277 0.024264 *  
+		FFMC:DMC     0.0027410  0.0011059   2.479 0.014335 *
+\end{verbatim}
 
 \subsection{Final predictor set}
 
