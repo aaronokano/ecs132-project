@@ -57,6 +57,6 @@ cvglmprop <- function( variables ) {
   pred <- apply( as.matrix( variables[notv,-1] ), 1, logit,
                 model$coefficients )
   pred <- pred > 0.5
-  mean( pred == response[notv] )
+  mean( pred == variables[notv,1] )
 }
 

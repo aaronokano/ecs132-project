@@ -104,9 +104,38 @@ makeConds <- function( variables ) {
 #Multiple R-squared: 0.1142, Adjusted R-squared: 0.0773 
 #F-statistic: 3.094 on 6 and 144 DF,  p-value: 0.007022 
 
+##### Better Result #########
+
+#> g <- lm(formula = area ~  FFMC + ISI +  DC + DC:ISI + month + DMC + DMC:FFMC , data=ordata)
+#> summary(g)
+
+#Call:
+#lm(formula = area ~ FFMC + ISI + DC + DC:ISI + month + DMC + 
+#    DMC:FFMC, data = ordata)
+
+#Residuals:
+#    Min      1Q  Median      3Q     Max 
+#-3.3620 -1.4821 -0.3396  1.0433  4.8055 
+
+#Coefficients:
+#              Estimate Std. Error t value Pr(>|t|)    
+#(Intercept) 23.1151201  9.0213988   2.562 0.011419 *  
+#FFMC        -0.2744283  0.1118159  -2.454 0.015301 *  
+#ISI          0.3185786  0.1871206   1.703 0.090799 .  
+#DC           0.0122545  0.0035439   3.458 0.000715 ***
+#month        2.5926093  0.8779764   2.953 0.003673 ** 
+#DMC         -0.2495317  0.1012981  -2.463 0.014935 *  
+#ISI:DC      -0.0006686  0.0002937  -2.277 0.024264 *  
+#FFMC:DMC     0.0027410  0.0011059   2.479 0.014335 *  
+#---
+#Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+#Residual standard error: 1.999 on 145 degrees of freedom
+#Multiple R-squared: 0.1379, Adjusted R-squared: 0.09632 
+#F-statistic: 3.314 on 7 and 145 DF,  p-value: 0.002658 
 
 
-
+#> predictorMat <-cbind(ordata$FFMC, ordata$ISI, ordata$DC, ordata$month, ordata$DMC, ordata$DC * ordata$ISI, ordata$DMC * ordata$FFMC)
 data <- read.csv('forestfires.csv',head=TRUE)
 data$month <- factor(data$month,
     levels=c('jan','feb','mar','apr','may','jun',
