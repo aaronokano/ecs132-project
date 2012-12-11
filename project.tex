@@ -33,7 +33,7 @@ In [Cortez and Morais, 2007], the output 'area' was first transformed with a ln(
 Then, several Data Mining methods were applied to produce the data set of interest. Our goal with
 this data is to predict the fire size given a particular set of regional data.
 
-\subsection{Which data matters?}
+\subsection{Preliminary analysis}
 
 The dataset consists of several variables pertaining to the time, location, and
 weather conditions associated with each fire. There is also a
@@ -68,7 +68,7 @@ candidates include DMC and RH.
 
 Using a forward stepping technique for adding terms to the linear model, where
 we continue to add terms and interaction terms to the formula and eliminate
-those that no longer contribute, we built the formula,
+those that no longer contribute much, we built the formula,
 \begin{equation}
   \widehat{m}_{area;RH,DMC}(t) = -7.108 + 0.1988 \cdot t_1 + 0.316772 \cdot t_2
   - 0.004806 \cdot t_1 \cdot t_2
@@ -100,6 +100,34 @@ value for this run evaluates to a mere 0.0001555681. However, it will serve
 well as a benchmark for testing the predictive abilities of other models
 relative to this one. We now explore some possible transformations and/or
 restrictions on the data set in an attempt to improve our predictions.
+
+\subsection{Which data matters?}
+
+We approach the task of narrowing our data range always with our goal in mind:
+we are attempting to find the \emph{mean} area given knowledge of a set of
+variables. Thus, it would make sense to remove the points which skew the mean
+considerably.
+
+The idea we used to break it down involved attempting to find a segment of data
+where we have a relatively uniform amount of information for each range of
+area. The easiest visual way we could determine this is by trimming down
+outliers and showing the distribution of the area until it looks moderately
+close to uniform. The difference between the distribution of area in the
+original data and our trimmed data is shown in Figures 2 and 3.
+
+\begin{figure}[htb]
+  \begin{minipage}[b]{0.45\linewidth}
+  \centering
+  \includegraphics[width=\textwidth]{figures/badhist.png}
+  \caption{Distribution of area with raw data}
+\end{minipage}
+\hspace{0.5cm}
+  \begin{minipage}[b]{0.45\linewidth}
+  \centering
+  \includegraphics[width=\textwidth]{figures/goodhist.png}
+  \caption{Distribution of area with trimmed data}
+\end{minipage}
+\end{figure}
 
 Initially, doing variations and correlations between predictor variables and the response
 variable resulted in abnormally low values. This led us to consider what the forest looked like.

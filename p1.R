@@ -66,6 +66,8 @@ makeConds <- function( variables ) {
 
 linear <- function(t,b) { b%*%c(1,t) }
 
+# Cross validate. Variables data frame must have area first and all predictors
+# afterwards.
 cvlm <- function( variables, ntest ) {
   v <- sample( 1:nrow(variables), ntest )
   model <- lm( area ~ ., variables[v,] )
@@ -73,6 +75,14 @@ cvlm <- function( variables, ntest ) {
                  ), variables[-v,1] )
 }
 
+# Same as above, but data is split up beforehand. Both data frames must have
+# same columns
+cvlmmore <- function( trainers, testers, ntest ) {
+  v <- sample( 1:nrow(testers), ntest )
+  model <- lm( area ~ ., trainers )
+  cbind( apply( as.matrix( testers[v,-1] ), 1, linear, model$coefficients
+                 ), testers[v,1] )
+}
 
 #conds <- makeConds( data[,5:11] )
 #perms <- data.matrix( expand.grid( rep( list(1:4), 7 ) ) )
