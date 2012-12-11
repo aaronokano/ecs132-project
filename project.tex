@@ -146,10 +146,6 @@ ignore data that had particular X,Y coordinates with a mean area of NaN or frequ
 
 \subsection{Predictor Selection 1}
 
-Backwards step-wise approach
-
-\subsection{Predictor Selection 2}
-
 For the second predictor set we decided to use the attributes that are part of the Fire Weather Index (FWI) such as FFMC, DMC, DC and ISI. 
 Before we eliminated part of the data these values did now have a good $R^{2}$ value compared to the other meteorological data such as temperature, wind, humidity and rain. 
 However, once we eliminated the data the attributes that are part of FWI gave us a far better $R^{2}$ value than the other meteorological variables. 
@@ -173,6 +169,11 @@ which is obtained from the output of \verb=lm=.
 		ISI:DC      -0.0006686  0.0002937  -2.277 0.024264 *  
 		FFMC:DMC     0.0027410  0.0011059   2.479 0.014335 *
 \end{verbatim}
+
+With this regression model we got an adjusted $R^{2}$ value of 0.09632 which was by far the best value we got at the time. Yet, this is still not a very good model for predicting the mean area of the fire. So then we decided to try another method of finding a good predictor set by using the backwards step-wise approach.
+
+\subsection{Predictor Selection 2}
+Backwards step-wise approach
 
 \subsection{Final predictor set}
 
