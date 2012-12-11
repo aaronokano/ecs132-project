@@ -31,9 +31,75 @@
 
 In [Cortez and Morais, 2007], the output 'area' was first transformed with a ln(x+1) function. 
 Then, several Data Mining methods were applied to produce the data set of interest. Our goal with
-this data is to predict the fire size given the data set.
+this data is to predict the fire size given a particular set of regional data.
 
 \subsection{Which data matters?}
+
+The dataset consists of several variables pertaining to the time, location, and
+weather conditions associated with each fire. There is also a
+variable---area---which tells us how much area the fire covered. This final
+variable we wish to predict using some, or all, of the remaining data.
+
+A quick examination of the raw data reveals some important facts to us. First,
+there is a large quantity of observations where the area is a flat zero.
+Furthermore, there are very few instances of fires exceeding 100 hectares,
+among which several far surpass that number. This will certainly affect our
+regressions if left alone, so some trimming and/or splitting of the data will
+be necessary. Digging deeper into the data also shows some cases similar to
+this,
+\begin{verbatim}
+  X Y month day FFMC   DMC    DC  ISI temp RH wind rain  area
+  3 4   sep sun 90.5  96.7 750.5 11.4 20.6 55  5.4    0 24.59
+  4 3   sep sun 90.5  96.7 750.5 11.4 20.4 55  4.9    0  3.64
+\end{verbatim}
+which implies that there could be a high degree of variance in our estimate of
+the regression function.
+
+Regardless of the above, we began our search for decent predictor variables
+with the raw data. This process consisted of merely running \verb=lm= with area
+vs.\ each individual predictor variable and looking at the p-values and
+confidence intervals after each run. By eliminating each variable which had a
+coefficient estimate with a high p-value or with a confidence interval that
+shows little impact, the result is that not a single variable is a strong
+predictor. In fact, the best of the lot is temperature, which stands out with a
+p-value of 0.0261 and a 95\% confidence interval of (0.1302, 2.0150)---a
+wide range consisting mostly of relatively insignificant values. Other top
+candidates include DMC and RH.
+
+Using a forward stepping technique for adding terms to the linear model, where
+we continue to add terms and interaction terms to the formula and eliminate
+those that no longer contribute, we built the formula,
+\begin{equation}
+  \widehat{m}_{area;RH,DMC}(t) = -7.108 + 0.1988 \cdot t_1 + 0.316772 \cdot t_2
+  - 0.004806 \cdot t_1 \cdot t_2
+\end{equation}
+which is obtained from the output of \verb=lm=.
+
+\begin{verbatim}
+             Estimate Std. Error t value Pr(>|t|)  
+             (Intercept) -7.107959  15.710450  -0.452   0.6511  
+             RH           0.198817   0.312079   0.637   0.5244  
+             DMC          0.316772   0.128131   2.472   0.0138 *
+             RH:DMC      -0.004806   0.002431  -1.977   0.0485 *
+\end{verbatim}
+
+To test the predictive power of this particular model, we employ the method of
+cross validation, using 440 samples for the training set and the remaining 77
+for the validation set. The result of one of these trials is the plot of actual
+area vs.\ predicted area in Figure 1.
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=0.4\textwidth]{figures/firenaivepredict.png}
+  \caption{Raw data regression---predicted area versus actual area. Dotted line
+  is the ideal case of perfect prediction}
+\end{figure}
+
+Clearly, our current model is not particularly accurate. In fact, the $R^2$
+value for this run evaluates to a mere 0.0001555681. However, it will serve
+well as a benchmark for testing the predictive abilities of other models
+relative to this one. We now explore some possible transformations and/or
+restrictions on the data set in an attempt to improve our predictions.
 
 Initially, doing variations and correlations between predictor variables and the response
 variable resulted in abnormally low values. This led us to consider what the forest looked like.
