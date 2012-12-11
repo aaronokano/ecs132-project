@@ -77,6 +77,20 @@ makeConds <- function( variables ) {
 #model <- lm( log( area + 1 ) ~ month + temp + RH + DC + month:RH, data=ordata)
 
 
+#predMat <- cbind( ordata$X, ordata$month, ordata$FFMC, ordata$DC, ordata$X *
+#                 ordata$FFMC )
+
+#mean( sapply( 1:4000, function(n) {v <- sample(1:153, 150); cor(
+#                                                                newdata$area[-v],
+#                                                                knn(
+#                                                                    predMat[v,],
+#                                                                    newdata$area[v],
+#                                                                    10,
+#                                                                    predMat[-v,]
+#                                                                    )$predyvals
+#                                                                )} )^2 )
+
+
 #> summary( lm( area ~ FFMC + ISI + ISI:FFMC + DC + DC:ISI + month, data=ordata
 #              > ) )
 #
