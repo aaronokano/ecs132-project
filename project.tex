@@ -129,6 +129,157 @@ original data and our trimmed data is shown in Figures 2 and 3.
 \end{minipage}
 \end{figure}
 
+We continued from this point using two different methods for choosing the
+predictors for our smaller data set. The first was to use the forward stepwise
+selection process suggested in the project specifications. The second attempt
+uses the backward stepwise selection process, which is briefly mentioned in the
+textbook. In addition, in the first selection attempt, we transformed the day
+and month variables using a sine function with the period equal to the number
+of days or months, as suggested by the project writeup. In the second attempt,
+these were instead converted to indicator random variables.
+
+
+
+\subsection{Predictor Selection 1}
+
+For the second predictor set we decided to use the attributes that are part of the Fire Weather Index (FWI) such as FFMC, DMC, DC and ISI. 
+Before we eliminated part of the data these values did now have a good $R^{2}$ value compared to the other meteorological data such as temperature, wind, humidity and rain. 
+However, once we eliminated the data the attributes that are part of FWI gave us a far better $R^{2}$ value than the other meteorological variables. 
+Using forward step-wise we started with FWI attributes, then we tested out different interaction terms between FWI attributes and found that $DMC \times FMC$  and $DC \times ISI$ greatly increased the $R^{2}$ of our regression.The only non FWI attribute we decided to go with was month because we saw a strong correlation between the months and the area.
+
+\begin{align*}
+  \widehat{m}_{area;FFMC,ISI,DC,month,DMC}(t) = &-23.1151201 - 0.2744283 \cdot t_1 + 0.3185786 \cdot t_2 \\
+  &+ 0.0122545 \cdot t_3 + 2.5926093 \cdot t_4 \\
+  &- 0.2495317 \cdot t_5 - 0.0006686 \cdot t_2 \cdot t_3 + 0.0027410 \cdot t_1 \cdot t_5 	   
+\end{align*}
+which is obtained from the output of \verb=lm=.
+
+\begin{verbatim}
+              		Estimate Std. Error t value Pr(>|t|)    
+		(Intercept) 23.1151201  9.0213988   2.562 0.011419 *  
+		FFMC        -0.2744283  0.1118159  -2.454 0.015301 *  
+		ISI          0.3185786  0.1871206   1.703 0.090799 .  
+		DC           0.0122545  0.0035439   3.458 0.000715 ***
+		month        2.5926093  0.8779764   2.953 0.003673 ** 
+		DMC         -0.2495317  0.1012981  -2.463 0.014935 *  
+		ISI:DC      -0.0006686  0.0002937  -2.277 0.024264 *  
+		FFMC:DMC     0.0027410  0.0011059   2.479 0.014335 *
+\end{verbatim}
+
+With this regression model we got an Adjusted $R^{2}$ value of 0.09632 which was by far the best value we got at the time. Yet, this is still not a very good model for predicting the mean area of the fire. So then we decided to try another method of finding a good predictor set by using the backwards step-wise approach.
+
+\subsection{Predictor Selection 2}
+
+In our later attempt, we discovered new ways to obtain our set of predictor
+variables. First, we settled on a backwards stepwise selection process, where
+we begin with all of the first-order predictor variables in our model and
+remove, one by one, the variables which show little impact in the regression.
+We define ``little impact'' to be a combination of a high p-value and/or a
+confidence interval which results in the predictor having close to zero
+influence. Second, we replaced the month and day variables with indicators for
+each month and day (minus one each in order to avoid linear dependence).  Once
+the set is trimmed to a reasonable level, interaction terms are added and
+Adjusted $R^2$ value is monitored. If an interaction term increases Adjusted
+$R^2$, we keep it, otherwise it is thrown out. 
+
+Naturally, the danger in this stage is in adding too many terms. According to
+the text, a good rule of thumb is that the number of predictors be less than
+the square root of the number of data points. In our limited data set, we have
+a total of 153 points to work with, meaning that there should be twelve or
+fewer predictors. We strayed on the conservative side, and left out some
+predictors which only brought a modest increase in Adjusted $R^2$. This left us
+with the final set, as seen in the output of \verb=lm=:
+
+\begin{verbatim}
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  4.880875   0.660986   7.384 1.16e-11 ***
+X           -0.149919   0.069056  -2.171 0.031584 *  
+DC           0.004469   0.001830   2.442 0.015821 *  
+June        -2.632148   1.043833  -2.522 0.012778 *  
+July        -9.321820   2.764645  -3.372 0.000961 ***
+August      -3.541709   1.104434  -3.207 0.001656 ** 
+September   -3.756403   1.250390  -3.004 0.003145 ** 
+ISI         -0.079231   0.047007  -1.686 0.094070 .  
+DC:July      0.009353   0.004713   1.984 0.049124 *  
+ISI:July     0.345872   0.181849   1.902 0.059186 .  
+\end{verbatim}
+
+This can be further solidified in mathematical form:
+\begin{align*}
+  \widehat{m}_{A;V}(t) = &4.880875 - 0.149919 \cdot t_1 + 0.004469 \cdot t_2 \\
+                         &- 0.079231 \cdot t_3 - 2.632148 \cdot t_4 \\
+                         &- 9.321820 \cdot t_5 - 3.541709\cdot t_6 \\
+                         &- 3.756403\cdot t_7 + 0.009353\cdot t_2 t_5 
+                         + 0.345872\cdot t_3 t_5
+\end{align*}
+where $A$ is the area, $V$ is the vector (X, DC, ISI, June, July, August, 
+September) and $t$ is the vector of inputs corresponding to each position in 
+the $V$ vector.
+
+Using this set, the Adjusted $R^2$ is reduced to 0.1456---a huge improvement
+over the previously used predictors.
+
+%\subsection{Final predictor set}
+%
+%After testing various predictor selection methods, we came up with the following predictor set:
+%\begin{itemize}
+%	\item FFMC
+%	\item ISI
+%	\item DMC
+%	\item Month
+%	\item DC
+%	\item DC:ISI
+%	\item DMC:FFMC
+%\end{itemize}
+
+\subsection{Cross validation}
+
+While the Adjusted $R^2$ value from \verb=lm= is a useful indication of the fit
+of a model to the data it was built from, what we are really looking for is the
+power of the model to predict future outcomes. This prediction capability can
+be verified using cross validation. For this, we created a function named
+\verb=cvlm=, which randomly splits an input data frame into training and
+testing sets of a specified size, runs \verb=lm= on the training set, predicts
+the outcome of the testing set, and combines those outcomes with the real data
+in a matrix. We can then use this matrix for plotting and also for computing
+$R^2$. We chose to run \verb=cvlm= with 110 points for the training set and the
+remaining 43 for the testing set. The results of this run can be seen in Figure
+4. The mean $R^2$ value over two thousand runs of \verb=cvlm= turned out to be
+0.1194353.
+
+To further test the robustness of our model, we also created a second cross
+validation function---\verb=cvlmmore=---to test our model built on the
+restricted data set against the raw data. Each time we tested our model against
+150 points from the raw data collection. One run of this function can be seen
+in Figure 5. Not surprisingly, the mean $R^2$ value over two thousand runs of
+\verb=cvlmmore= is significantly lower, at 0.005969264.
+\begin{figure}[htb]
+  \begin{minipage}[b]{0.45\linewidth}
+  \centering
+  \includegraphics[width=\textwidth]{figures/goodfiresowndat.png}
+  \caption{Actual area vs.\ predicted area with best regression model on
+  trimmed data set}
+\end{minipage}
+\hspace{0.5cm}
+  \begin{minipage}[b]{0.45\linewidth}
+  \centering
+  \includegraphics[width=\textwidth]{figures/goodfiresalldat.png}
+  \caption{Actual area vs.\ predicted area with best regression model on raw
+  data set}
+\end{minipage}
+\end{figure}
+
+%--------------------
+
+\subsection{Multicollinearity}
+
+
+\subsection{Nonparametric methods}
+
+
+\subsection{Further possibilities}
+
 Initially, doing variations and correlations between predictor variables and the response
 variable resulted in abnormally low values. This led us to consider what the forest looked like.
 We did this by creating a \verb+frequencyGrid+ and \verb+areaGrid+ that corresponds to each
@@ -171,56 +322,6 @@ of X,Y coordinates that exist. The data shown was below:
 These trends suggested that certain parts of the data set were irrelevant to our prediction of
 fire area. In order to predict fire size in the places that actually had fires, we decided to
 ignore data that had particular X,Y coordinates with a mean area of NaN or frequency of 0.
-
-\subsection{Predictor Selection 1}
-
-For the second predictor set we decided to use the attributes that are part of the Fire Weather Index (FWI) such as FFMC, DMC, DC and ISI. 
-Before we eliminated part of the data these values did now have a good $R^{2}$ value compared to the other meteorological data such as temperature, wind, humidity and rain. 
-However, once we eliminated the data the attributes that are part of FWI gave us a far better $R^{2}$ value than the other meteorological variables. 
-Using forward step-wise we started with FWI attributes, then we tested out different interaction terms between FWI attributes and found that $DMC \times FMC$  and $DC \times ISI$ greatly increased the $R^{2}$ of our regression.The only non FWI attribute we decided to go with was month because we saw a strong correlation between the months and the area.
-
-\begin{align*}
-  \widehat{m}_{area;FFMC,ISI,DC,month,DMC}(t) = &-23.1151201 - 0.2744283 \cdot t_1 + 0.3185786 \cdot t_2 \\
-  &+ 0.0122545 \cdot t_3 + 2.5926093 \cdot t_4 \\
-  &- 0.2495317 \cdot t_5 - 0.0006686 \cdot t_2 \cdot t_3 + 0.0027410 \cdot t_1 \cdot t_5 	   
-\end{align*}
-which is obtained from the output of \verb=lm=.
-
-\begin{verbatim}
-              		Estimate Std. Error t value Pr(>|t|)    
-		(Intercept) 23.1151201  9.0213988   2.562 0.011419 *  
-		FFMC        -0.2744283  0.1118159  -2.454 0.015301 *  
-		ISI          0.3185786  0.1871206   1.703 0.090799 .  
-		DC           0.0122545  0.0035439   3.458 0.000715 ***
-		month        2.5926093  0.8779764   2.953 0.003673 ** 
-		DMC         -0.2495317  0.1012981  -2.463 0.014935 *  
-		ISI:DC      -0.0006686  0.0002937  -2.277 0.024264 *  
-		FFMC:DMC     0.0027410  0.0011059   2.479 0.014335 *
-\end{verbatim}
-
-With this regression model we got an adjusted $R^{2}$ value of 0.09632 which was by far the best value we got at the time. Yet, this is still not a very good model for predicting the mean area of the fire. So then we decided to try another method of finding a good predictor set by using the backwards step-wise approach.
-
-\subsection{Predictor Selection 2}
-Backwards step-wise approach
-
-\subsection{Final predictor set}
-
-After testing various predictor selection methods, we came up with the following predictor set:
-\begin{itemize}
-	\item FFMC
-	\item ISI
-	\item DMC
-	\item Month
-	\item DC
-	\item DC:ISI
-	\item DMC:FFMC
-\end{itemize}
-
-\subsection{Cross validation}
-
-to be filled...
-
-%--------------------
 
 \section{Parkinson's disease}
 
