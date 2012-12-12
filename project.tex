@@ -174,10 +174,34 @@ ignore data that had particular X,Y coordinates with a mean area of NaN or frequ
 
 \subsection{Predictor Selection 1}
 
-Backwards step-wise approach
+For the second predictor set we decided to use the attributes that are part of the Fire Weather Index (FWI) such as FFMC, DMC, DC and ISI. 
+Before we eliminated part of the data these values did now have a good $R^{2}$ value compared to the other meteorological data such as temperature, wind, humidity and rain. 
+However, once we eliminated the data the attributes that are part of FWI gave us a far better $R^{2}$ value than the other meteorological variables. 
+Using forward step-wise we started with FWI attributes, then we tested out different interaction terms between FWI attributes and found that $DMC \times FMC$  and $DC \times ISI$ greatly increased the $R^{2}$ of our regression.The only non FWI attribute we decided to go with was month because we saw a strong correlation between the months and the area.
+
+\begin{align*}
+  \widehat{m}_{area;FFMC,ISI,DC,month,DMC}(t) = &-23.1151201 - 0.2744283 \cdot t_1 + 0.3185786 \cdot t_2 \\
+  &+ 0.0122545 \cdot t_3 + 2.5926093 \cdot t_4 \\
+  &- 0.2495317 \cdot t_5 - 0.0006686 \cdot t_2 \cdot t_3 + 0.0027410 \cdot t_1 \cdot t_5 	   
+\end{align*}
+which is obtained from the output of \verb=lm=.
+
+\begin{verbatim}
+              		Estimate Std. Error t value Pr(>|t|)    
+		(Intercept) 23.1151201  9.0213988   2.562 0.011419 *  
+		FFMC        -0.2744283  0.1118159  -2.454 0.015301 *  
+		ISI          0.3185786  0.1871206   1.703 0.090799 .  
+		DC           0.0122545  0.0035439   3.458 0.000715 ***
+		month        2.5926093  0.8779764   2.953 0.003673 ** 
+		DMC         -0.2495317  0.1012981  -2.463 0.014935 *  
+		ISI:DC      -0.0006686  0.0002937  -2.277 0.024264 *  
+		FFMC:DMC     0.0027410  0.0011059   2.479 0.014335 *
+\end{verbatim}
+
+With this regression model we got an adjusted $R^{2}$ value of 0.09632 which was by far the best value we got at the time. Yet, this is still not a very good model for predicting the mean area of the fire. So then we decided to try another method of finding a good predictor set by using the backwards step-wise approach.
 
 \subsection{Predictor Selection 2}
-
+Backwards step-wise approach
 
 \subsection{Final predictor set}
 
@@ -206,6 +230,47 @@ main aim of the data is to discriminate healthy people from those with PD, accor
 "status" column which is set to 0 for healthy and 1 for PD. Our goal with this data is to
 try to monitor patients with Parkinson's disease remotely, by simply analyzing their voices
 on the phone.
+
+\subsection{Possible Predictors}
+MDVP.Fo.Hz.
+\begin{verbatim}
+                       Estimate Std. Error z value Pr(>|z|)    
+(Intercept)            4.706084   0.775185   6.071 1.27e-09 ***
+parkinson$MDVP.Fo.Hz. -0.022051   0.004446  -4.960 7.05e-07 ***
+\end{verbatim}
+
+We then found the mean value of MDVP.Fo.Hz. if the status was zero and got 181.9378 then we found the mean value if the status was one which was 145.1808. After we got these values we used the logistic equation and plugged the intercept value, the $\hat{\beta}$ and first the mean of MDVP.Fo.Hz to get a value of 0.6668947 which is not a good value for status 0 since we need it to be $\leq$ 0.5. We did the same thing but now using the mean of MDVP.Fo.Hz with status one and got a value of 0.8182747 which is higher than 0.5 but since the value that we got for status zero was bad we decided not to use this as one of our predictors.
+
+We repeated these steps for the other variables and came up with the following data:
+
+\begin{tabular}{l|c|c|c|c|c|c}
+name & intercept & value & mean0 & mean1 & logit0 & logit1 \\
+\hline
+MDVP.Fhi.Hz. & 1.871388 & -0.003694 & 223.6368 & 188.4415 & 0.6668947 & 0.8182747 \\
+\hline
+MDVP.Flo.Hz. & 3.476248 & -0.019075 & 145.2073 & 106.8936 & 0.6696094 & 0.8080288 \\
+\hline
+MDVP.Jitter.Abs. & -1.0556 & 66665.3255 & 2.3375e-05 & 5.068027e-05 & 0.6230941 & 0.9107654 \\
+\hline
+spread1 & 15.8608 & 2.3966 & -6.759264 & -5.33342 & 0.416196 & 0.9560066 \\
+\hline
+spread2 & -2.4283 & 17.5354 & 0.160292 & 0.2481327 & 0.5944722 & 0.9996633 \\
+\hline
+PPE & -4.2214 & 32.2906 & 0.1230171 & 0.2338282 & 0.438044 & 0.9654122 \\
+\hline
+NHR & 0.4717 & 39.8604 & 0.01148271 & 0.02921095 & 0.7169546 & 0.8369981 \\
+\hline
+MDVP.Shimmer.dB & -1.497 & 12.353 & 0.1629583 & 0.3212041 & 0.6262175 & 0.9220717 \\
+\hline
+HNR & 7.0326 & -0.2576 & 24.67875 & 20.97405 & 0.662701 & 0.8361264 \\
+\hline
+RPDE & -2.4316 & 7.4058 & 0.4425519 & 0.5168159 & 0.699696 & 0.8015222 \\
+\hline
+DFA & -6.151 & 10.233 & 0.6957156 & 0.7254079 & 0.7247721 & 0.7811019 \\
+\hline
+\end{tabular}
+
+Looking through these values we can see that spread 1 and PPE are the only ones that satisfy the condition in which we want logit of status zero to be $\leq$ 0.5 and logit of status 1 to be $<$ 0.5. This led us to starting to figure out the predictor set by first including PPE and spread 1.
 
 \subsection{Predictor Selection 1}
 
