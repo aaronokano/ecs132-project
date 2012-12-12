@@ -60,3 +60,12 @@ cvglmprop <- function( variables ) {
   mean( pred == variables[notv,1] )
 }
 
+mean( sapply( 1:4000, function(n) {v <- sample(1:194, 150); cor(
+                                                                parkinson$status[-v],
+                                                                knn(
+                                                                    predMat[v,],
+                                                                    parkinson$status[v],
+                                                                    10,
+                                                                    predMat[-v,]
+                                                                    )$predyvals
+                                                                )} )^2 )
