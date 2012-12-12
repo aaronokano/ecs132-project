@@ -320,7 +320,8 @@ us, since we already determined that these were the variables critical to a
 reasonable $R^2$. However, the side effect of multicollinearity, as described
 in the textbook, is large standard errors. Looking back at the output from
 \verb=lm=, we see that the standard errors are not drastic. We can conclude
-from this that we should not worry about the multicollinearity in our model.
+from this that we should not worry about the multicollinearity in our model and
+the independence assumption does not play a large role here.
 
 
 \subsection{Nonparametric methods}
@@ -454,7 +455,8 @@ We did the same thing but now using the mean of MDVP.Fo.Hz with status one and g
 a value of 0.8182747 which is higher than 0.5 but since the value that we got for
 status zero was bad we decided not to use this as one of our predictor variable.
 
-We repeated these steps for the other variables and came up with the following data:
+We repeated these steps for the other variables and came up with the data in
+Table~\ref{tab:parkinsons}.
 
 \begin{table}[h]
   \centering
@@ -485,6 +487,9 @@ RPDE & -2.4316 & 7.4058 & 0.4425519 & 0.5168159 & 0.699696 & 0.8015222 \\
 DFA & -6.151 & 10.233 & 0.6957156 & 0.7254079 & 0.7247721 & 0.7811019 \\
 \hline
 \end{tabular}
+\caption{Individual estimates and performance of each variable in the
+Parkinson's data}
+\label{tab:parkinsons}
 \end{table}
 
 Looking through these values we can see that spread 1 and PPE are the only
