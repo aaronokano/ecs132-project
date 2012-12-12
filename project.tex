@@ -499,7 +499,13 @@ ran cross-validation to figure out if the predictor set of both of them
 together is any good. Using our cross-validation function \verb+cvglmprop+
 that is included in p2.R which returns the proportion of cases that were
 predicted correctly, and found that we correctly predicted a patient's
-status 85.12577\% of the time.
+status 85.12577\% of the time. The model using both spread 1 and PPE together.\\
+
+\begin{equation}
+\label{logit2}
+m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(9.292+1.618
+t_1 + 10.760t_2)}}
+\end{equation}
 
 We then tried each predictor variable by themselves and ran cross-validation
 on that model. First, using PPE we got that 85.46082\% we are predicting
@@ -519,7 +525,29 @@ and ran it through the cross-validation and got 84.97113\% the model predicted
 correctly which is worse than we had before. Then, we thought adding $spread1^{2}$
 as the interaction term might lead to better results but again we did not see
 improvement with 85.11031\% predicted correctly. We then went ahead and
-tried $PPE^{2}$ as an interaction term and the model predicted 85.02371\% correctly.
+tried $PPE^{2}$ as an interaction term and the model predicted 85.02371\% correctly.\\
+
+The model with the interaction term $PPE \times spread 1$:
+
+\begin{equation}
+\label{logit2}
+m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(10.449+1.896
+t_1 - 7.230t_2 - 3.563t_1t_2)}}
+\end{equation}
+
+The model with the interaction term $spread1^{2}$:
+\begin{equation}
+\label{logit2}
+m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(-1.9284 - 1.7461
+t_1 + 12.9264t_2 - 0.2573t_1^2)}}
+\end{equation}
+
+The model with the interaction term $PPE^{2}$:
+\begin{equation}
+\label{logit2}
+m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(5.928 + 1.349
+t_1 + 28.907t_2 - 43.498t_2^2)}}
+\end{equation}
 
 \subsection{Final predictor set}
 
