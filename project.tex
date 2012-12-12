@@ -76,11 +76,11 @@ those that no longer contribute much, we built the formula,
 which is obtained from the output of \verb=lm=.
 
 \begin{verbatim}
-             Estimate Std. Error t value Pr(>|t|)  
-             (Intercept) -7.107959  15.710450  -0.452   0.6511  
-             RH           0.198817   0.312079   0.637   0.5244  
-             DMC          0.316772   0.128131   2.472   0.0138 *
-             RH:DMC      -0.004806   0.002431  -1.977   0.0485 *
+          Estimate Std. Error t value Pr(>|t|)  
+          (Intercept) -7.107959  15.710450  -0.452   0.6511  
+          RH           0.198817   0.312079   0.637   0.5244  
+          DMC          0.316772   0.128131   2.472   0.0138 *
+          RH:DMC      -0.004806   0.002431  -1.977   0.0485 *
 \end{verbatim}
 
 To test the predictive power of this particular model, we employ the method of
@@ -88,7 +88,7 @@ cross validation, using 440 samples for the training set and the remaining 77
 for the validation set. The result of one of these trials is the plot of actual
 area vs.\ predicted area in Figure 1.
 
-\begin{figure}[hb]
+\begin{figure}
   \centering
   \includegraphics[width=0.4\textwidth]{figures/firenaivepredict.png}
   \caption{Raw data regression---predicted area versus actual area. Dotted line
@@ -115,7 +115,7 @@ outliers and showing the distribution of the area until it looks moderately
 close to uniform. The difference between the distribution of area in the
 original data and our trimmed data is shown in Figures 2 and 3.
 
-\begin{figure}[htb]
+\begin{figure}
   \begin{minipage}[b]{0.45\linewidth}
   \centering
   \includegraphics[width=\textwidth]{figures/badhist.png}
@@ -137,8 +137,6 @@ textbook. In addition, in the first selection attempt, we transformed the day
 and month variables using a sine function with the period equal to the number
 of days or months, as suggested by the project writeup. In the second attempt,
 these were instead converted to indicator random variables.
-
-
 
 \subsection{Predictor Selection 1}
 
@@ -174,11 +172,11 @@ which is obtained from the output of \verb=lm=.
 		FFMC:DMC     0.0027410  0.0011059   2.479 0.014335 *
 \end{verbatim}
 
-With this regression model we got an Adjusted $R^{2}$ value of 0.09632
-which was by far the best value we got at the time. Yet, this is still
-not a very good model for predicting the mean area of the fire. So then we
-decided to try another method of finding a good predictor set by using the backwards
-step-wise approach.
+With this regression model we got an Adjusted $R^{2}$ value of 0.09632 which
+was by far the best value we got at the time. Yet, this is still not a very
+good model for predicting the mean area of the fire. So then we decided to try
+another method of finding a good predictor set by using the backwards step-wise
+approach.
 
 \subsection{Predictor Selection 2}
 
@@ -266,7 +264,7 @@ restricted data set against the raw data. Each time we tested our model against
 150 points from the raw data collection. One run of this function can be seen
 in Figure 5. Not surprisingly, the mean $R^2$ value over two thousand runs of
 \verb=cvlmmore= is significantly lower, at 0.005969264.
-\begin{figure}[htb]
+\begin{figure}
   \begin{minipage}[b]{0.45\linewidth}
   \centering
   \includegraphics[width=\textwidth]{figures/goodfiresowndat.png}
@@ -316,7 +314,46 @@ from this that we should not worry about the multicollinearity in our model.
 \subsection{Nonparametric methods}
 
 For our nonparametric analysis, we used the provided k-nearest neighbor
-function. 
+function. We return to our original, completely intact data, to attempt
+regression with the nonparametric technique, using the same predictors we
+discovered initially. To aid in our inquiry, we created two functions:
+\verb=cvknn= and \verb=cvknnmore=. The former performs cross validation by
+training on some portion of the input data and validating on the rest. The
+latter takes two data sets as input: one for training and one for validating.
+They both generate output in a form useful for both plotting and finding $R^2$.
+
+Applying \verb=cvknn= to our whole data set with our original predictors
+produced an almost sinusoidal $R^2$ for increasing $k$. This can be seen in
+Figure~\ref{fig:r2knn}. The shape of the plot seems unusual, however, it
+makes sense given some thought. Because the data is nearly random, picking a
+small number of nearest neighbors could still be off by a substantial margin.
+On the other hand, averaging too many neighboring values will force the mean to
+a certain value for any input. This creates a sweet spot for $k$, which can be
+seen in the peak in the graph.
+
+Next, we ran \verb=knn= with the best predictors from the smaller data set. In
+the first trial, we ran our cross validation between subsets of the smaller
+data set using \verb=cvknn=. We sampled the mean $R^2$ values for $k=1,5,10,15$
+with 110 samples in the training set and the rest in the validation set over
+2000 iterations. $R^2$ did not appear to change substantially as $k$ increased,
+changing from 0.01875791 at $k=1$ to 0.02237041 at $k=15$.
+Figure~\ref{fig:r2knn} shows the change in $R^2$ as $k$ increases.
+
+Out of curiosity, we also ran the cross validation with the smaller data as the
+training set and the whole data as the validation set. This employed the use of
+\verb=cvknnmore=. What is odd about this case is that it predicts areas for
+low $k$ better than the model using the whole data for training. Considering
+the majority of data has a relatively low area value and the training set also
+consists of observations with a small area, this \emph{could} be explained by
+the lack of outliers in this model.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{figures/r2knn.png}
+  \caption{$R^2$ plotted against $k$ for three sets of k-nearest neighbor
+  regressions}
+  \label{fig:r2knn}
+\end{figure}
 
 \subsection{Further possibilities}
 
@@ -325,7 +362,7 @@ variable resulted in abnormally low values. This led us to consider what the for
 We did this by creating a \verb+frequencyGrid+ and \verb+areaGrid+ that corresponds to each
 of X,Y coordinates that exist. The data is as shown below:
 
-\begin{figure}[htb]
+\begin{figure}
   \begin{minipage}[b]{0.475\linewidth}
   \centering
   \includegraphics[width=\textwidth]{figures/freq.png}
@@ -390,7 +427,7 @@ status zero was bad we decided not to use this as one of our predictor variable.
 
 We repeated these steps for the other variables and came up with the following data:
 
-\begin{figure}[hb]
+\begin{figure}
   \centering
   \includegraphics[width=0.6\textwidth]{figures/parkinson.png}
   \caption{Scatter plots for Parkinson data}
