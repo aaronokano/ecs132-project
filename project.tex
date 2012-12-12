@@ -596,9 +596,12 @@ m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(15.8608+2.3966
 t_1)}}
 \end{equation}
 
-When this regression model is ran through cross-validation 85.4732\%
-were predicted correctly. We think this model is the best model for classifying the Parkinson status since we did not see any improvement by adding other predictor variables or adding interaction terms. Also, we do not think we have to worry about independence in this case 
-because our model has only one predictor variable.  
+When this regression model is cross-validated, 85.4732\% were predicted
+correctly. We think this model is the best model for classifying the Parkinson
+status since we did not see any improvement by adding other predictor variables
+or adding interaction terms. Also, we do not have to worry about the
+independence assumption holding in this case because our model has only one
+predictor variable.  
 
 \subsection{Nonparametric Analysis}
 
@@ -617,7 +620,6 @@ the validation set. Then, we used the sample function to sample a training and
 validation set then using these sets we ran knn and and found the proportion of
 successes. We decided to keep the size of our training and validation set
 constant while changing k and achieved the graph in Figure \ref{fig:knn_parkinson}.
-
 
 By looking at our data we decided to choose that k being equal to 15 gave us
 the best outcome with a proportion of 0.8445889 being predicted correctly. By
