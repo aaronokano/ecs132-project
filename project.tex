@@ -616,47 +616,51 @@ the evidence from each test shows that clones may have unfairly garnered a bad r
 \pagebreak
 
 \appendix
+
 \section{Plots}
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.6\textwidth]{parkinson.jpg}
+  \includegraphics[width=0.8\textwidth]{forestfire.jpg}
+  \caption{Scatter plots for forest fire data}
+  \label{fig:fire_scatters}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{parkinson.jpg}
   \caption{Scatter plots for Parkinson data}
   \label{fig:parkinson_scatters}
 \end{figure}
 
+\pagebreak
+
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.6\textwidth]{forestfire.jpg}
-  \caption{Scatter plots for forest fire data}
-  \label{fig:fire_scatters}
-\end{figure}
-\newpage
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.6\textwidth]{knn_good_whole.jpg}
+  \includegraphics[width=0.45\textwidth]{knn_good_whole.jpg}
   \caption{Plot of prediction vs real for nearest-neighbor with all data for
   training and testing}
   \label{fig:knn_whole}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
   \centering
-  \includegraphics[width=0.6\textwidth]{knn_good_own.jpg}
+  \includegraphics[width=0.415\textwidth]{knn_good_own.jpg}
   \caption{Plot of prediction vs real for nearest-neighbor with restricted data
     for training and testing}
   \label{fig:knn_own}
 \end{figure}
 
-\begin{figure}
+\pagebreak
+
+\begin{figure}[h]
   \centering
-  \includegraphics[width=0.6\textwidth]{knn_good_all.jpg}
+  \includegraphics[width=0.4\textwidth]{knn_good_all.jpg}
   \caption{Plot of prediction vs real for nearest-neighbor with restricted data
     for training and all data for testing}
   \label{fig:knn_all}
 \end{figure}
-
-\newpage
 
 \section{Code}
 \subsection{Problem 1}
@@ -665,11 +669,9 @@ the evidence from each test shows that clones may have unfairly garnered a bad r
 \lstinputlisting[caption=Analysis for Parkinson's Data Set]{p2.R}
 
 \section{Who did what}
-\begin{itemize}
-	\item Aaron - implemented R functions for Problem 1 and 2 and did initial analysis; generated plots and worked on write up for Problem 1
-	\item Anatoly - assisted Aaron in development of Problem 1 and 2 code and worked on the write up for Problem 2.
-	\item Justin - used Devanbu's article to finish Problem 3; generated plots
-	\item Samuel - wrote R to do analysis/plots, copy-edited Problem 3 and did write-up for Problem 1 and 2
-\end{itemize}
+Aaron - implemented R functions for Problem 1 and 2 and did initial analysis; generated plots and worked on write up for Problem 1 \\
+Anatoly - assisted Aaron in development of Problem 1 and 2 code and worked on the write up for Problem 2. \\
+Justin - used Devanbu's article to finish Problem 3; generated plots \\
+Samuel - wrote R to do analysis/plots, copy-edited Problem 3 and did write-up for Problem 1 and 2
 
 \end{document}             % End of document.
