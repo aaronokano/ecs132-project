@@ -274,9 +274,37 @@ in Figure 5. Not surprisingly, the mean $R^2$ value over two thousand runs of
 
 \subsection{Multicollinearity}
 
+In a situation with many predictor variables, as we have, we have the risk of
+multicollinearity. Detecting and dealing with multicollinearity can help
+improve the accuracy of the model and the selection of predictor variables. One
+common method of detecting multicollinearity is through a condition number---a
+concept alluded to in section 14.17.4 in the book. Through a quick Internet
+search, we found that the condition number is formally defined as
+\begin{equation*}
+    \kappa = \sqrt{ \frac{ \lambda_{\text{max}}}{\lambda_{\text{min}}}}
+\end{equation*}
+where $\lambda_{\text{max}}$ is the largest eigenvalue of the correlation
+matrix of the predictors and $\lambda_{\text{min}}$ is the smallest. A rough
+rule of thumb, according to the textbook, is that $\kappa$ should be less than
+15 if there are no major multicollinearity problems.
+
+Conveniently, R has a built-in function to compute this value for us---the
+\verb=kappa= function. Using R's \verb=cor= function, we created the
+correlation matrix from our predictor vectors, and input the result into
+\verb=kappa=. The number returned was 107.1714. Looking over the correlation
+matrix ourselves, we saw a relatively high correlation between some variables,
+for example, September and DC. Removing these variables would be a problem for
+us, since we already determined that these were the variables critical to a
+reasonable $R^2$. However, the side effect of multicollinearity, as described
+in the textbook, is large standard errors. Looking back at the output from
+\verb=lm=, we see that the standard errors are not drastic. We can conclude
+from this that we should not worry about the multicollinearity in our model.
+
 
 \subsection{Nonparametric methods}
 
+For our nonparametric analysis, we used the provided k-nearest neighbor
+function. 
 
 \subsection{Further possibilities}
 

@@ -12,6 +12,16 @@ areaGrid <- function( data ) {
            maximum, maximum ))
 }
 
+heatGrid <- function( data ) {
+  origin <- min( data$X,data$Y )
+  maximum <- max( data$X,data$Y )
+  coords <- expand.grid( origin:maximum, origin:maximum )
+  cbind( coords, apply( coords, 1, 
+    function(x) mean( data[ which( data$X == x[1] & data$Y == x[2] ), ]$area )
+    ))
+}
+
+
 # Modification to show mean temperature per location
 tempGrid <- function( data ) {
   origin <- min( data$X,data$Y )
@@ -83,6 +93,21 @@ cvlmmore <- function( trainers, testers, ntest ) {
   cbind( apply( as.matrix( testers[v,-1] ), 1, linear, model$coefficients
                  ), testers[v,1] )
 }
+
+# Same as above, but calls knn instead
+cvknn <- function( trainers, testers, ntest, k ) {
+  v <- sample(1:nrow(testers), ntest); 
+  cbind( knn( trainers[,-1], trainers[,1], k, testers[v,-1])$predyvals,
+        testers[v,1] )
+}
+
+createPlot <- function( predictor, response ) {
+  v <- cbind( predictor, response )
+  colnames(v) <- c("X","Y")
+  v <- data.frame( v )
+  ggplot( v, aes(X,Y)) + geom_point()
+}
+
 
 #conds <- makeConds( data[,5:11] )
 #perms <- data.matrix( expand.grid( rep( list(1:4), 7 ) ) )
