@@ -69,8 +69,9 @@ wide range consisting mostly of relatively insignificant values. Other top
 candidates include DMC and RH.
 
 Using a forward stepping technique for adding terms to the linear model, where
-we continue to add terms and interaction terms to the formula and eliminate
-those that no longer contribute much, we built the formula,
+we continue to add the best individually performing terms and interaction terms 
+to the formula and eliminate those that no longer contribute much, we built the
+formula,
 \begin{equation}
   \widehat{m}_{area;RH,DMC}(t) = -7.108 + 0.1988 \cdot t_1 + 0.316772 \cdot t_2
   - 0.004806 \cdot t_1 \cdot t_2
@@ -84,6 +85,14 @@ which is obtained from the output of \verb=lm=.
           DMC          0.316772   0.128131   2.472   0.0138 *
           RH:DMC      -0.004806   0.002431  -1.977   0.0485 *
 \end{verbatim}
+
+It does not look like much, but this was, indeed, the model with the best $R^2$
+which uses only the best individual terms. It appears from this result that the
+area of a fire will rise when either relative humidity or DMC rise. Considering
+that a substantial improvement to $R^2$ occurs when the interaction term is
+included, we see that the influence of DMC is diminished as RH becomes smaller,
+and vice-versa. This shows a dependence between the two variables in their
+contribution to the area of the fire.
 
 To test the predictive power of this particular model, we employ the method of
 cross validation, using 440 samples for the training set and the remaining 77
@@ -227,6 +236,18 @@ This can be further solidified in mathematical form:
 where $A$ is the area, $V$ is the vector (X, DC, ISI, June, July, August, 
 September) and $t$ is the vector of inputs corresponding to each position in 
 the $V$ vector.
+
+It is interesting to note that these are completely different predictors than
+we had when modeling using the raw data. Our estimate of mean fire size is now
+dependent on spatial and temporal values. It seems as though that now, since we
+have narrowed the scope we are analyzing, we have uncovered some finer details
+of the cause of larger fires. To summarize the equation above, our estimate of
+mean area decreases as coordinate X increases, it increases when DC increases,
+but decreases with ISI (except in July). The estimate in the summer months is
+lower than in the non-summer months, ceteris paribus. However, ceteris paribus
+is not a good assumption, since DC tends to be much higher in the summer. July
+has a much more negative $\hat{\Beta}$, but that is compensated for with the
+positive relation between July and DC and ISI.
 
 Using this set, the Adjusted $R^2$ is reduced to 0.1456---a huge improvement
 over the previously used predictors.
