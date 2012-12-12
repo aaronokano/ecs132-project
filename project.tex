@@ -88,7 +88,7 @@ cross validation, using 440 samples for the training set and the remaining 77
 for the validation set. The result of one of these trials is the plot of actual
 area vs.\ predicted area in Figure 1.
 
-\begin{figure}[htb]
+\begin{figure}[hb]
   \centering
   \includegraphics[width=0.4\textwidth]{figures/firenaivepredict.png}
   \caption{Raw data regression---predicted area versus actual area. Dotted line
@@ -142,10 +142,18 @@ these were instead converted to indicator random variables.
 
 \subsection{Predictor Selection 1}
 
-For the second predictor set we decided to use the attributes that are part of the Fire Weather Index (FWI) such as FFMC, DMC, DC and ISI. 
-Before we eliminated part of the data these values did now have a good $R^{2}$ value compared to the other meteorological data such as temperature, wind, humidity and rain. 
-However, once we eliminated the data the attributes that are part of FWI gave us a far better $R^{2}$ value than the other meteorological variables. 
-Using forward step-wise we started with FWI attributes, then we tested out different interaction terms between FWI attributes and found that $DMC \times FMC$  and $DC \times ISI$ greatly increased the $R^{2}$ of our regression.The only non FWI attribute we decided to go with was month because we saw a strong correlation between the months and the area.
+For the second predictor set we decided to use the attributes that are part
+of the Fire Weather Index (FWI) such as FFMC, DMC, DC and ISI. 
+Before we eliminated part of the data these values did now have a good
+$R^{2}$ value compared to the other meteorological data such as temperature,
+wind, humidity and rain. However, once we eliminated the data the attributes
+that are part of FWI gave us a far better $R^{2}$ value than the other
+meteorological variables. Using forward step-wise we started with FWI attributes,
+then we tested out different interaction terms between FWI attributes
+and found that $DMC \times FMC$  and $DC \times ISI$ greatly increased
+the $R^{2}$ of our regression.The only non FWI attribute we decided to
+go with was month because we saw a strong correlation between the months
+and the area.
 
 \begin{align*}
   \widehat{m}_{area;FFMC,ISI,DC,month,DMC}(t) = &-23.1151201 - 0.2744283 \cdot t_1 + 0.3185786 \cdot t_2 \\
@@ -166,21 +174,11 @@ which is obtained from the output of \verb=lm=.
 		FFMC:DMC     0.0027410  0.0011059   2.479 0.014335 *
 \end{verbatim}
 
-\begin{figure}[htb]
-  \begin{minipage}[b]{0.45\linewidth}
-  \centering
-  \includegraphics[width=\textwidth]{figures/freq.png}
-  \caption{Distribution of area with raw data}
-\end{minipage}
-\hspace{0.5cm}
-  \begin{minipage}[b]{0.45\linewidth}
-  \centering
-  \includegraphics[width=\textwidth]{figures/area.png}
-  \caption{Distribution of area with trimmed data}
-\end{minipage}
-\end{figure}
-
-With this regression model we got an Adjusted $R^{2}$ value of 0.09632 which was by far the best value we got at the time. Yet, this is still not a very good model for predicting the mean area of the fire. So then we decided to try another method of finding a good predictor set by using the backwards step-wise approach.
+With this regression model we got an Adjusted $R^{2}$ value of 0.09632
+which was by far the best value we got at the time. Yet, this is still
+not a very good model for predicting the mean area of the fire. So then we
+decided to try another method of finding a good predictor set by using the backwards
+step-wise approach.
 
 \subsection{Predictor Selection 2}
 
@@ -325,35 +323,24 @@ function.
 Initially, doing variations and correlations between predictor variables and the response
 variable resulted in abnormally low values. This led us to consider what the forest looked like.
 We did this by creating a \verb+frequencyGrid+ and \verb+areaGrid+ that corresponds to each
-of X,Y coordinates that exist. The data shown was below:
+of X,Y coordinates that exist. The data is as shown below:
 
-\begin{verbatim}
-> frequencyGrid(data)
-      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
- [1,]    0    0    0    0    0    0    0    0    0
- [2,]   19   25    0    0    0    0    0    0    0
- [3,]   10    1    1   22    0   25    2    3    0
- [4,]   15   27   43   36   23    9   45    1    4
- [5,]    4   20    7   25    3   49   11    4    2
- [6,]    0    0    4    8    4    3    2   52    1
- [7,]    0    0    0    0    0    0    0    0    0
- [8,]    0    0    0    0    0    0    0    1    0
- [9,]    0    0    0    0    0    0    0    0    6
+\begin{figure}[htb]
+  \begin{minipage}[b]{0.475\linewidth}
+  \centering
+  \includegraphics[width=\textwidth]{figures/freq.png}
+  \caption{Frequency grid of forest data}
+\end{minipage}
+\hspace{0.5cm}
+  \begin{minipage}[b]{0.475\linewidth}
+  \centering
+  \includegraphics[width=\textwidth]{figures/area.png}
+  \caption{Area grid of forest data}
+\end{minipage}
+\end{figure}
 
-> areaGrid(data)
-          [,1]    [,2]      [,3]      [,4]     [,5]      [,6]      [,7]      [,8]      [,9]
- [1,]      NaN     NaN       NaN       NaN      NaN       NaN       NaN       NaN       NaN
- [2,] 11.57579 18.5060       NaN       NaN      NaN       NaN       NaN       NaN       NaN
- [3,] 15.71400  0.0000 6.5800000  7.858182      NaN  7.711200 13.675000   8.77000       NaN
- [4,] 10.01867  5.3100 2.9383721 11.039722 3.206522 16.052222 10.541556  12.18000   46.4025
- [5,] 28.86750  4.6315 0.3114286 11.480400 0.000000 28.245918  7.035455   0.73250    4.0800
- [6,]      NaN     NaN 0.0000000 10.966250 4.405000  2.863333 43.225000  24.33269   42.8700
- [7,]      NaN     NaN       NaN       NaN      NaN       NaN       NaN       NaN       NaN
- [8,]      NaN     NaN       NaN       NaN      NaN       NaN       NaN 185.76000       NaN
- [9,]      NaN     NaN       NaN       NaN      NaN       NaN       NaN       NaN    0.7450
-\end{verbatim}
-
-\verb+frequencyGrid+ and \verb+areaGrid+ reveal several trends about the forest:
+\verb+frequencyGrid+ (Figure 6) and \verb+areaGrid+ (Figure 7) reveal several
+trends about the forest:
 
 \begin{enumerate}
 	\item $\approx 44\%$ of the forest locations never had a fire
@@ -361,21 +348,25 @@ of X,Y coordinates that exist. The data shown was below:
 	\item Locations with few fires usually have large mean areas
 \end{enumerate}
 
-These trends suggested that certain parts of the data set were irrelevant to our prediction of
-fire area. In order to predict fire size in the places that actually had fires, we decided to
-ignore data that had particular X,Y coordinates with a mean area of NaN or frequency of 0.
+These trends suggested that certain parts of the data set were
+irrelevant to our prediction of fire area. In order to more accurately
+predict fire size in places that actually had fires, data that corresponds
+to X,Y coordinates with a mean area of NaN or frequency of 0 can be ignored.
+However, this task is beyond the scope of this project.
 
 \section{Parkinson's disease}
 
-The dataset was created by Max Little of the University of Oxford, in collaboration with the
-National Centre for Voice and Speech, Denver, Colorado, who recorded the speech signals. The
-main aim of the data is to discriminate healthy people from those with PD, according to
-"status" column which is set to 0 for healthy and 1 for PD. Our goal with this data is to
-try to monitor patients with Parkinson's disease remotely, by simply analyzing their voices
-on the phone.
+The dataset was created by Max Little of the University of Oxford, in
+collaboration with the National Centre for Voice and Speech, Denver, Colorado,
+who recorded the speech signals. The main aim of the data is to discriminate healthy
+people from those with PD, according to "status" column which is set to 0 for
+healthy and 1 for PD. Our goal with this data is to try to monitor patients with
+Parkinson's disease remotely, by simply analyzing their voices on the phone.
 
 \subsection{Possible Predictors}
-The first variable we looked at to see if it could be a good predictor variable was MDVP.Fo.Hz. We ran the following code to get a generalized linear model: 
+The first variable we looked at to see if it could be a good predictor variable was
+MDVP.Fo.Hz. We ran the following code to get a generalized linear model:
+
 \begin{verbatim}
 glm(formula = parkinson$status ~ parkinson$MDVP.Fo.Hz., family = binomial)
 \end{verbatim}
@@ -388,9 +379,22 @@ From this we got the following output:
 parkinson$MDVP.Fo.Hz. -0.022051   0.004446  -4.960 7.05e-07 ***
 \end{verbatim}
 
-We then found the mean value of MDVP.Fo.Hz when the status was zero and got a mean of 181.9378 then we found the mean value if the status was one which was 145.1808. After we got these values we used the logistic equation and plugged the intercept value, the $\hat{\beta}$ and first the mean of MDVP.Fo.Hz when the status is zero to get a value of 0.6668947 which is not a good value for status of zero since we need it to be $\leq$ 0.5. We did the same thing but now using the mean of MDVP.Fo.Hz with status one and got a value of 0.8182747 which is higher than 0.5 but since the value that we got for status zero was bad we decided not to use this as one of our predictor variable.
+We then found the mean value of MDVP.Fo.Hz when the status was zero and got a mean of
+181.9378 then we found the mean value if the status was one which was 145.1808. After
+we got these values we used the logistic equation and plugged the intercept value, the
+$\hat{\beta}$ and first the mean of MDVP.Fo.Hz when the status is zero to get a value of
+0.6668947 which is not a good value for status of zero since we need it to be $\leq$ 0.5.
+We did the same thing but now using the mean of MDVP.Fo.Hz with status one and got
+a value of 0.8182747 which is higher than 0.5 but since the value that we got for
+status zero was bad we decided not to use this as one of our predictor variable.
 
 We repeated these steps for the other variables and came up with the following data:
+
+\begin{figure}[hb]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figures/parkinson.png}
+  \caption{Scatter plots for Parkinson data}
+\end{figure}
 
 \begin{table}[h]
   \centering
@@ -423,33 +427,44 @@ DFA & -6.151 & 10.233 & 0.6957156 & 0.7254079 & 0.7247721 & 0.7811019 \\
 \end{tabular}
 \end{table}
 
-Looking through these values we can see that spread 1 and PPE are the only ones that satisfy the condition in which we want logit of status zero to be $\leq$ 0.5 and logit of status 1 to be $<$ 0.5. This led us to starting to figure out the predictor set by first including PPE and spread 1.
+Looking through these values we can see that spread 1 and PPE are the only
+ones that satisfy the condition in which we want logit of status zero to
+be $\leq$ 0.5 and logit of status 1 to be $<$ 0.5. This helped us start to
+figure out the predictor set by first including PPE and spread 1.
 
 \subsection{Predictor Selection 1}
 
-We used the following:
+After choosing PPE and spread 1 as our predictor variables, we went ahead and
+ran cross-validation to figure out if the predictor set of both of them
+together is any good. Using our cross-validation function \verb+cvglmprop+
+that is included in p2.R which returns the proportion of cases that were
+predicted correctly, and found that we correctly predicted a patient's
+status 85.12577\% of the time.
 
-\begin{equation}
-\label{logit2}
-m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(\beta_0+\beta_1
-t_1)}}
-\end{equation}
+We then tried each predictor variable by themselves and ran cross-validation
+on that model. First, using PPE we got that 85.46082\% we are predicting
+correctly. This is better than using both predictor variables together as
+we did in the previous cross-validation. Then, we ran cross-validation on
+the model with just spread 1 as the predictor variable and we got that 85.4732\%
+we are predicting correctly. After looking at this we decided that using
+spread 1 or PPE separately was better than using them together and settled
+that spread 1 was the predictor variable we are going to use for our model.
+However, before we continued we wanted to see if using spread 1 and PPE together
+with a mix of interaction variables could improve our model.
 
-\begin{tabular}{l|c|c|r}
-predictor & class 0 & class 1 & Comments \\
-\hline
-spread1 & 0.4 & 0.9 & Good! \\
-PPE & 0.4 & 0.9 & Good! \\
-\end{tabular}
-
-After choosing PPE and spread 1 as our predictor variables we went ahead and ran cross-validation to figure out if the predictor set of both of them together is any good. Using our cross-validation function \verb+cvglmprop+ that is included in p2.R which returns the proportion of cases that were predicted correctly, and got that 85.12577\% of the time we are predicting correctly.\\
-
-We then tried each predictor variable by themselves and ran cross-validation on that model. First, using PPE we got that 85.46082\% we are predicting correctly. This is better than using both predictor variables together as we did in the previous cross-validation. Then, we ran cross-validation on the model with just spread 1 as the predictor variable and we got that 85.4732\% we are predicting correctly. After looking at this we decided that using spread 1 or PPE separately was better than using them together and settled that spread 1 was the predictor variable we are going to use for our model. However, before we continued we wanted to see if using spread 1 and PPE together with a mix of interaction variables could improve our model.  
 \subsection{Predictor Selection 2}
-We first tried to add the interaction term $PPE \times spread 1$ to our model and ran it through the cross-validation and got 84.97113\% the model predicted correctly which is worse than we had before. Then, we thought adding $spread1^{2}$ as the interaction term might lead to better results but again we did not see improvement with 85.11031\% predicted correctly. We then went ahead and tried $PPE^{2}$ as an interaction term and the model predicted 85.02371\% correctly.
+
+We first tried to add the interaction term $PPE \times spread 1$ to our model
+and ran it through the cross-validation and got 84.97113\% the model predicted
+correctly which is worse than we had before. Then, we thought adding $spread1^{2}$
+as the interaction term might lead to better results but again we did not see
+improvement with 85.11031\% predicted correctly. We then went ahead and
+tried $PPE^{2}$ as an interaction term and the model predicted 85.02371\% correctly.
+
 \subsection{Final predictor set}
 
-After testing various predictor selection we decided to stick with a simple model of spread 1 as our only predictor variable.
+After testing various predictor selection we decided to stick with a
+simple model of spread 1 as our only predictor variable.
 
 The equation for our model is:
 \begin{equation}
@@ -458,7 +473,9 @@ m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(15.8608+2.3966
 t_1)}}
 \end{equation}
 
-When this regression model is ran through cross-validation 85.4732\% were predicted correctly.  
+When this regression model is ran through cross-validation 85.4732\%
+were predicted correctly.  
+
 \subsection{Nonparametric Analysis}
 
 to be filled...
@@ -526,18 +543,10 @@ the evidence from each test shows that clones may have unfairly garnered a bad r
 
 \section{Who did what}
 \begin{itemize}
-	\item Aaron - implemented R functions for Problem 1 and 2 and did initial analysis
-	\item Anatoly - assisted Aaron in development of Problem 1 and 2 code; used code to generate plots
-	\item Justin - used Devanbu's article to finish Problem 3
-	\item Samuel - wrote R to do initial analysis, copy-edited Problem 3 and did write-up for Problem 1 and 2
+	\item Aaron - implemented R functions for Problem 1 and 2 and did initial analysis; generated plots
+	\item Anatoly - assisted Aaron in development of Problem 1 and 2 code
+	\item Justin - used Devanbu's article to finish Problem 3; generated plots
+	\item Samuel - wrote R to do analysis/plots, copy-edited Problem 3 and did write-up for Problem 1 and 2
 \end{itemize}
-
-\pagebreak
-
-\begin{figure}[htb]
-  \centering
-  \includegraphics[width=0.8\textwidth]{figures/teampic.jpg}
-  \caption{The End!}
-\end{figure}
 
 \end{document}             % End of document.
