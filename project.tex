@@ -333,14 +333,20 @@ try to monitor patients with Parkinson's disease remotely, by simply analyzing t
 on the phone.
 
 \subsection{Possible Predictors}
-MDVP.Fo.Hz.
+The first variable we looked at to see if it could be a good predictor variable was MDVP.Fo.Hz. We ran the following code to get a generalized linear model: 
+\begin{verbatim}
+glm(formula = parkinson$status ~ parkinson$MDVP.Fo.Hz., family = binomial)
+\end{verbatim}
+
+From this we got the following output:
+
 \begin{verbatim}
                        Estimate Std. Error z value Pr(>|z|)    
 (Intercept)            4.706084   0.775185   6.071 1.27e-09 ***
 parkinson$MDVP.Fo.Hz. -0.022051   0.004446  -4.960 7.05e-07 ***
 \end{verbatim}
 
-We then found the mean value of MDVP.Fo.Hz. if the status was zero and got 181.9378 then we found the mean value if the status was one which was 145.1808. After we got these values we used the logistic equation and plugged the intercept value, the $\hat{\beta}$ and first the mean of MDVP.Fo.Hz to get a value of 0.6668947 which is not a good value for status 0 since we need it to be $\leq$ 0.5. We did the same thing but now using the mean of MDVP.Fo.Hz with status one and got a value of 0.8182747 which is higher than 0.5 but since the value that we got for status zero was bad we decided not to use this as one of our predictors.
+We then found the mean value of MDVP.Fo.Hz when the status was zero and got a mean of 181.9378 then we found the mean value if the status was one which was 145.1808. After we got these values we used the logistic equation and plugged the intercept value, the $\hat{\beta}$ and first the mean of MDVP.Fo.Hz when the status is zero to get a value of 0.6668947 which is not a good value for status of zero since we need it to be $\leq$ 0.5. We did the same thing but now using the mean of MDVP.Fo.Hz with status one and got a value of 0.8182747 which is higher than 0.5 but since the value that we got for status zero was bad we decided not to use this as one of our predictor variable.
 
 We repeated these steps for the other variables and came up with the following data:
 
@@ -348,7 +354,7 @@ We repeated these steps for the other variables and came up with the following d
   \centering
 \begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
-name & intercept & value & mean0 & mean1 & logit0 & logit1 \\
+name & intercept & $\hat{\beta}$ & mean0 & mean1 & logit0 & logit1 \\
 \hline
 MDVP.Fhi.Hz. & 1.871388 & -0.003694 & 223.6368 & 188.4415 & 0.6668947 & 0.8182747 \\
 \hline
@@ -384,7 +390,7 @@ We used the following:
 \begin{equation}
 \label{logit2}
 m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(\beta_0+\beta_1
-t_1+...+\beta_r t_r)}}
+t_1)}}
 \end{equation}
 
 \begin{tabular}{l|c|c|r}
@@ -394,17 +400,24 @@ spread1 & 0.4 & 0.9 & Good! \\
 PPE & 0.4 & 0.9 & Good! \\
 \end{tabular}
 
-\subsection{Predictor Selection 2}
+After choosing PPE and spread 1 as our predictor variables we went ahead and ran cross-validation to figure out if the predictor set of both of them together is any good. Using our cross-validation function \verb+cvglmprop+ that is included in p2.R which returns the proportion of cases that were predicted correctly, and got that 85.12577\% of the time we are predicting correctly.\\
 
+We then tried each predictor variable by themselves and ran cross-validation on that model. First, using PPE we got that 85.46082\% we are predicting correctly. This is better than using both predictor variables together as we did in the previous cross-validation. Then, we ran cross-validation on the model with just spread 1 as the predictor variable and we got that 85.4732\% we are predicting correctly. After looking at this we decided that using spread 1 or PPE separately was better than using them together and settled that spread 1 was the predictor variable we are going to use for our model. However, before we continued we wanted to see if using spread 1 and PPE together with a mix of interaction variables could improve our model.  
+\subsection{Predictor Selection 2}
+We first tried to add the interaction term $PPE \times spread 1$ to our model and ran it through the cross-validation and got 84.97113\% the model predicted correctly which is worse than we had before. Then, we thought adding $spread1^{2}$ as the interaction term might lead to better results but again we did not see improvement with 85.11031\% predicted correctly. We then went ahead and tried $PPE^{2}$ as an interaction term and the model predicted 85.02371\% correctly.
 \subsection{Final predictor set}
 
-After testing various predictor selection methods, we came up with the following predictor set:
-\begin{itemize}
-	\item spread1
-	\item PPE
-\end{itemize}
+After testing various predictor selection we decided to stick with a simple model of spread 1 as our only predictor variable.
 
-\subsection{Cross validation}
+The equation for our model is:
+\begin{equation}
+\label{logit2}
+m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(15.8608+2.3966
+t_1)}}
+\end{equation}
+
+When this regression model is ran through cross-validation 85.4732\% were predicted correctly.  
+\subsection{Nonparametric Analysis}
 
 to be filled...
 
