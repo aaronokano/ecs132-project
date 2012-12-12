@@ -571,6 +571,13 @@ were predicted correctly.
 
 \subsection{Nonparametric Analysis}
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{knn_prop_pred.jpg}
+  \caption{Proportion of Successful Predictions versus Number of Neighbors used in Nearest-Neighbor.}
+  \label{fig:knn_parkinson}
+\end{figure}
+
 For the nonparametric analysis we decided to use the nearest-neighbor function
 that was provided by Professor Matloff. We then went ahead and created two
 sets, a training set and a validation set. The total length of our set is 195
@@ -578,13 +585,8 @@ and we decided that our training set would be 150 values and 45 values will be
 the validation set. Then, we used the sample function to sample a training and
 validation set then using these sets we ran knn and and found the proportion of
 successes. We decided to keep the size of our training and validation set
-constant while changing k and achieved the following graph.
+constant while changing k and achieved the graph in Figure \ref{fig:knn_parkinson}.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.4\textwidth]{knn_prop_pred.jpg}
-  \caption{Proportion of Successful Predictions versus Number of Neighbors used in Nearest-Neighbor.}
-\end{figure}
 
 By looking at our data we decided to choose that k being equal to 15 gave us
 the best outcome with a proportion of 0.8445889 being predicted correctly. By
