@@ -512,7 +512,15 @@ were predicted correctly.
 
 \subsection{Nonparametric Analysis}
 
-For the nonparametric analysis we decided to use the nearest-neighbor function that was provided by Professor Matloff. We then went ahead and created two sets a training set and a validation set, the total length of our set is 195 and we decided that our training set would be 150 values and 45 values will be the validation set. Then, we used a sample function to sample a training and validation set then using this set running knn and finding the propitiation of success. We decided to keep the size of our training and validation set constant while changing k.
+For the nonparametric analysis we decided to use the nearest-neighbor function that was provided by Professor Matloff. We then went ahead and created two sets, a training set and a validation set. The total length of our set is 195 and we decided that our training set would be 150 values and 45 values will be the validation set. Then, we used the sample function to sample a training and validation set then using these sets we ran knn and and found the proportion of successes. We decided to keep the size of our training and validation set constant while changing k and achieved the following graph.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{figures/knn_prop_pred.png}
+  \caption{Proportion of Successful Predictions versus Number of Neighbors used in Nearest-Neighbor.}
+\end{figure}
+
+By looking at our data we decided to choose that k being equal to 15 gave us the best outcome with a proportion of 0.8445889 being predicted correctly. By looking at the graph, increasing the value of neighbors from the range of 10 to 40 gave us around the same proportion of successes. We think that using 15 for k is reasonable since it is not a big portion of our data set, we did not feel comfortable increasing the value of k greatly just to get a small increase of successes.
 
 %--------------------
 
@@ -592,8 +600,8 @@ the evidence from each test shows that clones may have unfairly garnered a bad r
 
 \section{Who did what}
 \begin{itemize}
-	\item Aaron - implemented R functions for Problem 1 and 2 and did initial analysis; generated plots
-	\item Anatoly - assisted Aaron in development of Problem 1 and 2 code
+	\item Aaron - implemented R functions for Problem 1 and 2 and did initial analysis; generated plots and worked on write up for Problem 1
+	\item Anatoly - assisted Aaron in development of Problem 1 and 2 code and worked on the write up for Problem 2.
 	\item Justin - used Devanbu's article to finish Problem 3; generated plots
 	\item Samuel - wrote R to do analysis/plots, copy-edited Problem 3 and did write-up for Problem 1 and 2
 \end{itemize}
