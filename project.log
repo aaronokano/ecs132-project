@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  12 DEC 2012 10:08
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  12 DEC 2012 10:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -447,36 +447,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 528--534
 File: knn_prop_pred.jpg Graphic file (type jpg)
 
 <use knn_prop_pred.jpg>
-Package pdftex.def Info: knn_prop_pred.jpg used on input line 576.
+Package pdftex.def Info: knn_prop_pred.jpg used on input line 577.
 (pdftex.def)             Requested size: 202.3529pt x 118.76384pt.
  [9 <./knn_prop_pred.jpg>] [10]
 <forestfire.jpg, id=57, 481.8pt x 481.8pt>
 File: forestfire.jpg Graphic file (type jpg)
  <use forestfire.jpg>
-Package pdftex.def Info: forestfire.jpg used on input line 658.
+Package pdftex.def Info: forestfire.jpg used on input line 659.
 (pdftex.def)             Requested size: 404.71353pt x 404.72394pt.
  [11 <./forestfire.jpg>] <parkinson.jpg, id=61, 481.8pt x 481.8pt>
 File: parkinson.jpg Graphic file (type jpg)
  <use parkinson.jpg>
-Package pdftex.def Info: parkinson.jpg used on input line 667.
+Package pdftex.def Info: parkinson.jpg used on input line 668.
 (pdftex.def)             Requested size: 404.71353pt x 404.72394pt.
  [12 <./parkinson.jpg>] <knn_good_whole.jpg, id=65, 481.8pt x 481.8pt>
 File: knn_good_whole.jpg Graphic file (type jpg)
 
 <use knn_good_whole.jpg>
-Package pdftex.def Info: knn_good_whole.jpg used on input line 676.
+Package pdftex.def Info: knn_good_whole.jpg used on input line 677.
 (pdftex.def)             Requested size: 227.64894pt x 227.64435pt.
  <knn_good_own.jpg, id=66, 481.8pt x 481.8pt>
 File: knn_good_own.jpg Graphic file (type jpg)
 
 <use knn_good_own.jpg>
-Package pdftex.def Info: knn_good_own.jpg used on input line 684.
+Package pdftex.def Info: knn_good_own.jpg used on input line 685.
 (pdftex.def)             Requested size: 209.94095pt x 209.94153pt.
  [13 <./knn_good_whole.jpg> <./knn_good_own.jpg>]
 <knn_good_all.jpg, id=71, 481.8pt x 481.8pt>
 File: knn_good_all.jpg Graphic file (type jpg)
  <use knn_good_all.jpg>
-Package pdftex.def Info: knn_good_all.jpg used on input line 694.
+Package pdftex.def Info: knn_good_all.jpg used on input line 695.
 (pdftex.def)             Requested size: 202.3529pt x 202.34726pt.
  (./p1.R
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 2.
@@ -507,7 +507,7 @@ LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 27.
 )
-Overfull \hbox (484.12007pt too wide) in paragraph at lines 27--704
+Overfull \hbox (484.12007pt too wide) in paragraph at lines 27--705
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -524,7 +524,7 @@ Here is how much of TeX's memory you used:
  9468 multiletter control sequences out of 15000+200000
  12630 words of font info for 49 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,10n,43p,284b,2131s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,10n,43p,288b,2131s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pf
 b></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
@@ -541,7 +541,7 @@ ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
 ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
 /2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/
 2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on project.pdf (16 pages, 2103853 bytes).
+Output written on project.pdf (16 pages, 2104059 bytes).
 PDF statistics:
  134 PDF objects out of 1000 (max. 8388607)
  85 compressed objects within 1 object stream

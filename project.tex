@@ -418,7 +418,7 @@ frequency of fires. Are some areas of the park more heavily used for campfires?
 Could the presence of many fires in the past lead to the smaller mean area in
 areas with a high frequency of fires or is that trend only because fires tend
 to be small in the first place? Much to our dismay, this seeming gold mine of
-information could not be excavated, as our data is spread much to thin to
+information could not be excavated, as our data is spread much too thin to
 examine individual regions.
 
 \section{Parkinson's disease}
@@ -557,7 +557,7 @@ t_1 + 28.907t_2 - 43.498t_2^2)}}
 \subsection{Final predictor set}
 
 After testing various predictor selection we decided to stick with a
-simple model of spread 1 as our only predictor variable.
+simple model of just spread 1 as our only predictor variable.
 
 The equation for our model is:
 \begin{equation}
@@ -567,7 +567,8 @@ t_1)}}
 \end{equation}
 
 When this regression model is ran through cross-validation 85.4732\%
-were predicted correctly.  
+were predicted correctly. We think this model is the best model for classifying the Parkinson status since we did not see any improvement by adding other predictor variables or adding interaction terms. Also, we do not think we have to worry about independence in this case 
+because our model has only one predictor variable.  
 
 \subsection{Nonparametric Analysis}
 
