@@ -37,7 +37,7 @@ particular set of regional data.
 
 \subsection{Preliminary analysis}
 
-The dataset consists of several variables pertaining to the time, location, and
+The data set consists of several variables pertaining to the time, location, and
 weather conditions associated with each fire. There is also a
 variable---area---which tells us how much area the fire covered. This final
 variable we wish to predict using some, or all, of the remaining data.
@@ -416,7 +416,7 @@ forest comes into play.  We created two functions to assist us in our
 pursuit---\verb+frequencyGrid+ and \verb+areaGrid+---which return the frequency
 of fires and the mean area burned, respectively, for each coordinate on a map
 of the park. To further the visual presentation of this data, we transformed
-the returned matrix into a heat map.
+the returned matrices into heat maps.
 
 \begin{figure}
   \begin{minipage}[b]{0.475\linewidth}
@@ -453,9 +453,7 @@ examine individual regions.
 
 \section{Parkinson's disease}
 
-The dataset was created by Max Little of the University of Oxford, in
-collaboration with the National Centre for Voice and Speech, Denver, Colorado,
-who recorded the speech signals. The main aim of the data is to discriminate healthy
+The data set was created by Max Little of the University of Oxford to discriminate healthy
 people from those with PD, according to "status" column which is set to 0 for
 healthy and 1 for PD. Our goal with this data is to try to monitor patients with
 Parkinson's disease remotely, by simply analyzing their voices on the phone.
@@ -534,10 +532,9 @@ ran cross-validation to figure out if the predictor set of both of them
 together is any good. Using our cross-validation function \verb+cvglmprop+
 that is included in p2.R which returns the proportion of cases that were
 predicted correctly, and found that we correctly predicted a patient's
-status 85.12577\% of the time. The model using both spread 1 and PPE together.\\
+status 85.12577\% of the time. The model using both spread 1 and PPE together. \\
 
 \begin{equation}
-\label{logit2}
 m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(9.292+1.618
 t_1 + 10.760t_2)}}
 \end{equation}
@@ -565,21 +562,18 @@ tried $PPE^{2}$ as an interaction term and the model predicted 85.02371\% correc
 The model with the interaction term $PPE \times spread 1$:
 
 \begin{equation}
-\label{logit2}
 m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(10.449+1.896
 t_1 - 7.230t_2 - 3.563t_1t_2)}}
 \end{equation}
 
 The model with the interaction term $spread1^{2}$:
 \begin{equation}
-\label{logit2}
 m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(-1.9284 - 1.7461
 t_1 + 12.9264t_2 - 0.2573t_1^2)}}
 \end{equation}
 
 The model with the interaction term $PPE^{2}$:
 \begin{equation}
-\label{logit2}
 m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(5.928 + 1.349
 t_1 + 28.907t_2 - 43.498t_2^2)}}
 \end{equation}
@@ -591,7 +585,6 @@ simple model of just spread 1 as our only predictor variable.
 
 The equation for our model is:
 \begin{equation}
-\label{logit2}
 m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(15.8608+2.3966
 t_1)}}
 \end{equation}
