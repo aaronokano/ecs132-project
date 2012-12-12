@@ -254,22 +254,24 @@ testing sets of a specified size, runs \verb=lm= on the training set, predicts
 the outcome of the testing set, and combines those outcomes with the real data
 in a matrix. We can then use this matrix for plotting and also for computing
 $R^2$. We chose to run \verb=cvlm= with 110 points for the training set and the
-remaining 43 for the testing set. The results of this run can be seen in Figure
-4. The mean $R^2$ value over two thousand runs of \verb=cvlm= turned out to be
-0.1194353.
+remaining 43 for the testing set. The results of this run can be seen in
+Figure~\ref{fig:linreggood1}. The mean $R^2$ value over two thousand runs of
+\verb=cvlm= turned out to be 0.1194353.
 
 To further test the robustness of our model, we also created a second cross
 validation function---\verb=cvlmmore=---to test our model built on the
 restricted data set against the raw data. Each time we tested our model against
 150 points from the raw data collection. One run of this function can be seen
-in Figure 5. Not surprisingly, the mean $R^2$ value over two thousand runs of
-\verb=cvlmmore= is significantly lower, at 0.005969264.
+in Figure~\ref{fig:linreggood2}. Not surprisingly, the mean $R^2$ value over
+two thousand runs of \verb=cvlmmore= is significantly lower, at 0.005969264.
+
 \begin{figure}
   \begin{minipage}[b]{0.45\linewidth}
   \centering
   \includegraphics[width=\textwidth]{figures/goodfiresowndat.png}
   \caption{Actual area vs.\ predicted area with best regression model on
   trimmed data set}
+  \label{fig:linreggood1}
 \end{minipage}
 \hspace{0.5cm}
   \begin{minipage}[b]{0.45\linewidth}
@@ -277,6 +279,7 @@ in Figure 5. Not surprisingly, the mean $R^2$ value over two thousand runs of
   \includegraphics[width=\textwidth]{figures/goodfiresalldat.png}
   \caption{Actual area vs.\ predicted area with best regression model on raw
   data set}
+  \label{fig:linreggood2}
 \end{minipage}
 \end{figure}
 
@@ -427,12 +430,6 @@ status zero was bad we decided not to use this as one of our predictor variable.
 
 We repeated these steps for the other variables and came up with the following data:
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.6\textwidth]{figures/parkinson.png}
-  \caption{Scatter plots for Parkinson data}
-\end{figure}
-
 \begin{table}[h]
   \centering
 \begin{tabular}{|l|c|c|c|c|c|c|}
@@ -572,6 +569,21 @@ the evidence from each test shows that clones may have unfairly garnered a bad r
 \pagebreak
 
 \appendix
+\section{Plots}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figures/parkinson.png}
+  \caption{Scatter plots for Parkinson data}
+  \label{fig:parkinson_scatters}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figures/forestfire.png}
+  \caption{Scatter plots for forest fire data}
+  \label{fig:fire_scatters}
+\end{figure}
+
 \section{Code}
 \subsection{Problem 1}
 \lstinputlisting[caption=Analysis for Forest Fire Data Set]{p1.R}
