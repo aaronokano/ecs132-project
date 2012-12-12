@@ -55,6 +55,16 @@ cvlmmore <- function( trainers, testers, ntest ) {
                  ), testers[v,1] )
 }
 
+# Like cvlmmore, but picks the best of the prediction or a zero
+cvlm_or <- function( trainers, testers, ntest ) {
+  v <- sample( 1:nrow(testers), ntest )
+  model <- lm( area ~ ., trainers )
+  m <- cbind( apply( as.matrix( testers[v,-1] ), 1, linear, model$coefficients
+                 ), testers[v,1] )
+  m[m[,2] == 0,1] <- 0
+  m
+}
+
 # Same as above, but calls knn instead
 cvknn <- function( set, ntrain, k ) {
   v <- sample(1:nrow(set), ntrain)

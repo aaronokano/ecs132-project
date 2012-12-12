@@ -371,6 +371,36 @@ Figures \ref{fig:knn_whole}, \ref{fig:knn_own}, and \ref{fig:knn_all}.
   \label{fig:r2knn}
 \end{figure}
 
+\subsection{Comparison}
+
+Now we have two types of models to deal with: the parametric model and the
+nonparametric model. Scrutinizing the previous results, we came to the
+conclusion that the best model depends on the assumptions you are willing to
+make about the fires you are trying to predict. If you want to make no
+assumptions and guess that any size fire could happen at any time, then the
+nearest-neighbor model is likely the best bet, since it is the highest
+performer under cross validation for the entire data set. 
+
+However, if it is the middle of April, then large fires are unlikely, so using
+the parametric model on the restricted data set will probably offer decent
+predictions. Also, considering that most of the failures of that model occured
+when the actual area is a zero, if your prediction is that either the size of
+the fire could follow the prediction from the model or it could be a zero. For
+the purpose of curiosity, we verified that adopting this approach does indeed
+improve $R^2$ using the function \verb=cvlm_or=, where we choose the
+``prediction'' to be a zero if the actual area is zero, otherwise we leave it
+as is. This gives us an $R^2$ of 0.07294934---much better than anything else we
+tried, but still not fantastic. A plot of these is shown in
+Figure~\ref{fig:lm_or}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{better_fire_prediction.jpg}
+  \caption{Actual area vs predicted area for the ``either-or'' prediction
+  method}
+  \label{fig:lm_or}
+\end{figure}
+
 \subsection{Further possibilities}
 
 While experimenting with different perspectives on the data, a few other possible
