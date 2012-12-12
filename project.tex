@@ -29,9 +29,11 @@
 
 \section{Forest Fire}
 
-In [Cortez and Morais, 2007], the output 'area' was first transformed with a ln(x+1) function. 
-Then, several Data Mining methods were applied to produce the data set of interest. Our goal with
-this data is to predict the fire size given a particular set of regional data.
+In [Cortez and Morais, 2007], the total area a forest fire spreads to is
+analyzed using several environmental variables collected near the time of the
+fire. Then, several Data Mining methods were applied to produce the data set
+of interest. Our goal with this data is to predict the fire size given a
+particular set of regional data.
 
 \subsection{Preliminary analysis}
 
@@ -140,18 +142,18 @@ these were instead converted to indicator random variables.
 
 \subsection{Predictor Selection 1}
 
-For the second predictor set we decided to use the attributes that are part
-of the Fire Weather Index (FWI) such as FFMC, DMC, DC and ISI. 
-Before we eliminated part of the data these values did now have a good
-$R^{2}$ value compared to the other meteorological data such as temperature,
-wind, humidity and rain. However, once we eliminated the data the attributes
-that are part of FWI gave us a far better $R^{2}$ value than the other
-meteorological variables. Using forward step-wise we started with FWI attributes,
-then we tested out different interaction terms between FWI attributes
-and found that $DMC \times FMC$  and $DC \times ISI$ greatly increased
-the $R^{2}$ of our regression.The only non FWI attribute we decided to
-go with was month because we saw a strong correlation between the months
-and the area.
+For the second predictor set we decided to use the attributes that are part of
+the Fire Weather Index (FWI) such as FFMC, DMC, DC and ISI.  Before we
+eliminated part of the data, these values did not have a good $R^{2}$ value
+compared to the other meteorological data such as temperature, wind, humidity
+and rain. However, once we eliminated the data the attributes that are part of
+FWI gave us a far better $R^{2}$ value than the other meteorological variables.
+Using forward step-wise selection, we started with the best-looking predictors
+we could initially find, which were the FWI attributes. Then we tested out
+different interaction terms between FWI attributes and found that $DMC \times
+FMC$  and $DC \times ISI$ greatly increased the $R^{2}$ of our regression. The
+only non FWI attribute we decided to go with was month because we saw a strong
+correlation between the months and the area.
 
 \begin{align*}
   \widehat{m}_{area;FFMC,ISI,DC,month,DMC}(t) = &-23.1151201 - 0.2744283 \cdot t_1 + 0.3185786 \cdot t_2 \\
@@ -173,21 +175,20 @@ which is obtained from the output of \verb=lm=.
 \end{verbatim}
 
 With this regression model we got an Adjusted $R^{2}$ value of 0.09632 which
-was by far the best value we got at the time. Yet, this is still not a very
-good model for predicting the mean area of the fire. So then we decided to try
-another method of finding a good predictor set by using the backwards step-wise
-approach.
+was by far the best value we achieved up to that point. Yet, this still is not
+very high, so instead of settling for this model we decided to search for
+another method of generating our predictor set.
 
 \subsection{Predictor Selection 2}
 
-In our later attempt, we discovered new ways to obtain our set of predictor
-variables. First, we settled on a backwards stepwise selection process, where
-we begin with all of the first-order predictor variables in our model and
-remove, one by one, the variables which show little impact in the regression.
-We define ``little impact'' to be a combination of a high p-value and/or a
-confidence interval which results in the predictor having close to zero
-influence. Second, we replaced the month and day variables with indicators for
-each month and day (minus one each in order to avoid linear dependence).  Once
+In our final attempt, we discovered several new and improved ways to obtain our
+set of predictor variables. First, we replaced the month and day variables with
+indicators for each month and day (minus one each in order to avoid linear
+dependence). Second, we studied the backwards stepwise approach, where we begin
+with all of the first-order predictor variables in our model and remove, one by
+one, the variables which show little impact in the regression. We define
+``little impact'' to be a combination of a high p-value and/or a confidence
+interval which results in the predictor having close to zero influence. Once
 the set is trimmed to a reasonable level, interaction terms are added and
 Adjusted $R^2$ value is monitored. If an interaction term increases Adjusted
 $R^2$, we keep it, otherwise it is thrown out. 
@@ -197,8 +198,8 @@ the text, a good rule of thumb is that the number of predictors be less than
 the square root of the number of data points. In our limited data set, we have
 a total of 153 points to work with, meaning that there should be twelve or
 fewer predictors. We strayed on the conservative side, and left out some
-predictors which only brought a modest increase in Adjusted $R^2$. This left us
-with the final set, as seen in the output of \verb=lm=:
+predictors which only brought a modest increase in Adjusted $R^2$. This brought
+us the final set of nine variables, as seen in this output of \verb=lm=:
 
 \begin{verbatim}
 Coefficients:
@@ -229,19 +230,6 @@ the $V$ vector.
 
 Using this set, the Adjusted $R^2$ is reduced to 0.1456---a huge improvement
 over the previously used predictors.
-
-%\subsection{Final predictor set}
-%
-%After testing various predictor selection methods, we came up with the following predictor set:
-%\begin{itemize}
-%	\item FFMC
-%	\item ISI
-%	\item DMC
-%	\item Month
-%	\item DC
-%	\item DC:ISI
-%	\item DMC:FFMC
-%\end{itemize}
 
 \subsection{Cross validation}
 
@@ -350,6 +338,9 @@ the majority of data has a relatively low area value and the training set also
 consists of observations with a small area, this \emph{could} be explained by
 the lack of outliers in this model.
 
+Plots of the predicted vs.\ actual are listed in the appendix as
+Figures \ref{fig:knn_whole}, \ref{fig:knn_own}, and \ref{fig:knn_all}.
+
 \begin{figure}
   \centering
   \includegraphics[width=0.4\textwidth]{figures/r2knn.png}
@@ -360,39 +351,53 @@ the lack of outliers in this model.
 
 \subsection{Further possibilities}
 
-Initially, doing variations and correlations between predictor variables and the response
-variable resulted in abnormally low values. This led us to consider what the forest looked like.
-We did this by creating a \verb+frequencyGrid+ and \verb+areaGrid+ that corresponds to each
-of X,Y coordinates that exist. The data is as shown below:
+While experimenting with different perspectives on the data, a few other possible
+courses of action may have also revealed further insight into the true causes
+of forest fires. Unfortunately, in the more interesting cases, there simply was
+not enough data to form a reasonable analysis. One of these cases is
+illustrated visually in Figures \ref{fig:fire_freq} and \ref{fig:fire_area}.
+
+The data for the park as a whole offers little in the form of predictive
+capacity. It seems as though any permutation of the predictor data could bring
+any possible fire size. This led us to consider whether the geography of the
+forest comes into play.  We created two functions to assist us in our
+pursuit---\verb+frequencyGrid+ and \verb+areaGrid+---which return the frequency
+of fires and the mean area burned, respectively, for each coordinate on a map
+of the park. To further the visual presentation of this data, we transformed
+the returned matrix into a heat map.
 
 \begin{figure}
   \begin{minipage}[b]{0.475\linewidth}
   \centering
   \includegraphics[width=\textwidth]{figures/freq.png}
   \caption{Frequency grid of forest data}
+  \label{fig:fire_freq}
 \end{minipage}
 \hspace{0.5cm}
   \begin{minipage}[b]{0.475\linewidth}
   \centering
   \includegraphics[width=\textwidth]{figures/area.png}
   \caption{Area grid of forest data}
+  \label{fig:fire_area}
 \end{minipage}
 \end{figure}
 
-\verb+frequencyGrid+ (Figure 6) and \verb+areaGrid+ (Figure 7) reveal several
-trends about the forest:
+The two figures reveal several important trends about the forest:
 
 \begin{enumerate}
-	\item $\approx 44\%$ of the forest locations never had a fire
-	\item Locations with many fires usually have small mean areas
-	\item Locations with few fires usually have large mean areas
+	\item Fires occur in some regions of the park substantially more than in
+    others.
+	\item Locations with many fires usually have small mean areas.
+	\item Locations with few fires usually have large mean areas.
 \end{enumerate}
 
-These trends suggested that certain parts of the data set were
-irrelevant to our prediction of fire area. In order to more accurately
-predict fire size in places that actually had fires, data that corresponds
-to X,Y coordinates with a mean area of NaN or frequency of 0 can be ignored.
-However, this task is beyond the scope of this project.
+These trends suggest some relation between location in the park and size and
+frequency of fires. Are some areas of the park more heavily used for campfires?
+Could the presence of many fires in the past lead to the smaller mean area in
+areas with a high frequency of fires or is that trend only because fires tend
+to be small in the first place? Much to our dismay, this seeming gold mine of
+information could not be excavated, as our data is spread much to thin to
+examine individual regions.
 
 \section{Parkinson's disease}
 
@@ -512,7 +517,14 @@ were predicted correctly.
 
 \subsection{Nonparametric Analysis}
 
-For the nonparametric analysis we decided to use the nearest-neighbor function that was provided by Professor Matloff. We then went ahead and created two sets, a training set and a validation set. The total length of our set is 195 and we decided that our training set would be 150 values and 45 values will be the validation set. Then, we used the sample function to sample a training and validation set then using these sets we ran knn and and found the proportion of successes. We decided to keep the size of our training and validation set constant while changing k and achieved the following graph.
+For the nonparametric analysis we decided to use the nearest-neighbor function
+that was provided by Professor Matloff. We then went ahead and created two
+sets, a training set and a validation set. The total length of our set is 195
+and we decided that our training set would be 150 values and 45 values will be
+the validation set. Then, we used the sample function to sample a training and
+validation set then using these sets we ran knn and and found the proportion of
+successes. We decided to keep the size of our training and validation set
+constant while changing k and achieved the following graph.
 
 \begin{figure}
   \centering
@@ -520,7 +532,13 @@ For the nonparametric analysis we decided to use the nearest-neighbor function t
   \caption{Proportion of Successful Predictions versus Number of Neighbors used in Nearest-Neighbor.}
 \end{figure}
 
-By looking at our data we decided to choose that k being equal to 15 gave us the best outcome with a proportion of 0.8445889 being predicted correctly. By looking at the graph, increasing the value of neighbors from the range of 10 to 40 gave us around the same proportion of successes. We think that using 15 for k is reasonable since it is not a big portion of our data set, we did not feel comfortable increasing the value of k greatly just to get a small increase of successes.
+By looking at our data we decided to choose that k being equal to 15 gave us
+the best outcome with a proportion of 0.8445889 being predicted correctly. By
+looking at the graph, increasing the value of neighbors from the range of 10 to
+40 gave us around the same proportion of successes. We think that using 15 for
+k is reasonable since it is not a big portion of our data set, we did not feel
+comfortable increasing the value of k greatly just to get a small increase of
+successes.
 
 %--------------------
 
@@ -591,6 +609,33 @@ the evidence from each test shows that clones may have unfairly garnered a bad r
   \caption{Scatter plots for forest fire data}
   \label{fig:fire_scatters}
 \end{figure}
+\newpage
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\textwidth]{figures/knn_good_whole.png}
+  \caption{Plot of prediction vs real for nearest-neighbor with all data for
+  training and testing}
+  \label{fig:knn_whole}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\textwidth]{figures/knn_good_own.png}
+  \caption{Plot of prediction vs real for nearest-neighbor with restricted data
+    for training and testing}
+  \label{fig:knn_own}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\textwidth]{figures/knn_good_all.png}
+  \caption{Plot of prediction vs real for nearest-neighbor with restricted data
+    for training and all data for testing}
+  \label{fig:knn_all}
+\end{figure}
+
+\newpage
 
 \section{Code}
 \subsection{Problem 1}

@@ -99,14 +99,15 @@ cvknn <- function( set, ntrain, k ) {
   v <- sample(1:nrow(set), ntrain)
   r <- data.frame( cbind( knn( set[v,-1], set[v,1], k, set[-v,-1] )$predyvals,
                          set[-v,1] ) )
-  colnames(r) <- c("pred","actual")
   r
 }
 
 cvknnmore <- function( trainers, testers, ntest, k ) {
   v <- sample(1:nrow(testers), ntest); 
-  cbind( knn( trainers[,-1], trainers[,1], k, testers[v,-1])$predyvals,
-        testers[v,1] )
+  r <- data.frame( cbind( knn( trainers[,-1], trainers[,1], k, testers[v,-1])$predyvals,
+        testers[v,1] ))
+  colnames(r) <- c("pred","actual")
+  r
 }
 
 createPlot <- function( predictor, response ) {
