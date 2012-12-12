@@ -243,7 +243,10 @@ We then found the mean value of MDVP.Fo.Hz. if the status was zero and got 181.9
 
 We repeated these steps for the other variables and came up with the following data:
 
-\begin{tabular}{l|c|c|c|c|c|c}
+\begin{table}[h]
+  \centering
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
 name & intercept & value & mean0 & mean1 & logit0 & logit1 \\
 \hline
 MDVP.Fhi.Hz. & 1.871388 & -0.003694 & 223.6368 & 188.4415 & 0.6668947 & 0.8182747 \\
@@ -269,6 +272,7 @@ RPDE & -2.4316 & 7.4058 & 0.4425519 & 0.5168159 & 0.699696 & 0.8015222 \\
 DFA & -6.151 & 10.233 & 0.6957156 & 0.7254079 & 0.7247721 & 0.7811019 \\
 \hline
 \end{tabular}
+\end{table}
 
 Looking through these values we can see that spread 1 and PPE are the only ones that satisfy the condition in which we want logit of status zero to be $\leq$ 0.5 and logit of status 1 to be $<$ 0.5. This led us to starting to figure out the predictor set by first including PPE and spread 1.
 
