@@ -1,21 +1,24 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.3.14)  12 DEC 2012 09:31
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  12 DEC 2012 10:35
 entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
 **project.tex
-(C:\Users\SCH\Documents\git\ecs132-project\project.tex
+(./project.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
-abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
-croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
-lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
-ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
-vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
-an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
-romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
-sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
-senglishmax, welsh, loaded.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman-x-2012-05-30, ngerman-x-2012-05-30, afrikaans, ancientgreek, ibycus, arabi
+c, armenian, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danis
+h, dutch, ukenglish, usenglishmax, esperanto, estonian, ethiopic, farsi, finnis
+h, french, friulan, galician, german, ngerman, swissgerman, monogreek, greek, h
+ungarian, icelandic, assamese, bengali, gujarati, hindi, kannada, malayalam, ma
+rathi, oriya, panjabi, tamil, telugu, indonesian, interlingua, irish, italian, 
+kurmanji, latin, latvian, lithuanian, mongolian, mongolianlmc, bokmal, nynorsk,
+ polish, portuguese, romanian, romansh, russian, sanskrit, serbian, serbianc, s
+lovak, slovenian, spanish, swedish, turkish, turkmen, ukrainian, uppersorbian, 
+welsh, loaded.
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -30,24 +33,24 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks14
 \ex@=\dimen103
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen104
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count87
@@ -88,8 +91,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 LaTeX Info: Redefining \[ on input line 2666.
 LaTeX Info: Redefining \] on input line 2667.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\classes\amsthm.sty"
-Package: amsthm 2004/08/06 v2.20
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2009/07/02 v2.20.1
 \thm@style=\toks19
 \thm@bodyfont=\toks20
 \thm@headfont=\toks21
@@ -100,18 +103,18 @@ Package: amsthm 2004/08/06 v2.20
 \thm@headsep=\skip48
 \dth@everypar=\toks24
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2009/06/22 v3.00
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.sty"
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/listings.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks25
 )
@@ -128,46 +131,46 @@ Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \lst@lineno=\count104
 \lst@maxwidth=\dimen115
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 \c@lstnumber=\count105
 \lst@skipnumbers=\count106
 \lst@framebox=\box29
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2007/02/22 1.4 listings configuration
 ))
 Package: listings 2007/02/22 1.4 (Carsten Heinz)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
-File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
+(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
-Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
+(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count107
 ))
 \Gin@req@height=\dimen116
 \Gin@req@width=\dimen117
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\float\float.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count108
 \float@exts=\toks27
@@ -175,11 +178,11 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks28
 \@floatcapt=\box31
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\enumerate.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
 \@enLab=\toks29
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 \fancy@headwidth=\skip49
 \f@ncyO@elh=\skip50
 \f@ncyO@erh=\skip51
@@ -190,10 +193,10 @@ Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
 \f@ncyO@olf=\skip56
 \f@ncyO@orf=\skip57
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2012/02/19 v3.2f Customizing captions (AR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2012/01/12 v1.4b caption3 kernel (AR)
 \captionmargin=\dimen118
 \captionmargin@=\dimen119
@@ -206,18 +209,18 @@ Package: caption3 2012/01/12 v1.4b caption3 kernel (AR)
 Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
-Package: ifvtex 2010/03/01 v1.5 Switches for detecting VTeX and its modes (HO)
+(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count110
@@ -232,18 +235,32 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen130
 \Gm@layoutvoffset=\dimen131
 \Gm@dimlist=\toks30
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstlang2.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/lstlang2.sty
 File: lstlang2.sty 2004/09/05 1.3 listings language file
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstlang3.sty"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/lstlang3.sty
 File: lstlang3.sty 2004/09/05 1.3 listings language file
 )
-(C:\Users\SCH\Documents\git\ecs132-project\project.aux)
+(./project.aux
+
+LaTeX Warning: Label `logit2' multiply defined.
+
+
+LaTeX Warning: Label `logit2' multiply defined.
+
+
+LaTeX Warning: Label `logit2' multiply defined.
+
+
+LaTeX Warning: Label `logit2' multiply defined.
+
+)
+\openout1 = `project.aux'.
+
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
@@ -257,8 +274,7 @@ LaTeX Font Info:    ... okay on input line 23.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
 \c@lstlisting=\count113
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ (/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count114
 \scratchdimen=\dimen132
@@ -271,7 +287,50 @@ LaTeX Font Info:    ... okay on input line 23.
 \MPnumerator=\count118
 \makeMPintoPDFobject=\count119
 \everyMPtoPDFconversion=\toks32
+) (/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
@@ -310,226 +369,182 @@ Package caption Info: End \AtBeginDocument code.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Try loading font information for U+msa on input line 25.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 25.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<firenaivepredict.jpg, id=15, 505.13719pt x 505.13719pt>
+{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<firenaivepredict.jpg, id=16, 505.13719pt x 505.13719pt>
 File: firenaivepredict.jpg Graphic file (type jpg)
 
 <use firenaivepredict.jpg>
 Package pdftex.def Info: firenaivepredict.jpg used on input line 104.
 (pdftex.def)             Requested size: 202.3529pt x 202.3519pt.
- <badhist.jpg, id=16, 505.13719pt x 505.13719pt>
+ <badhist.jpg, id=17, 505.13719pt x 505.13719pt>
 File: badhist.jpg Graphic file (type jpg)
 
 <use badhist.jpg>
 Package pdftex.def Info: badhist.jpg used on input line 132.
 (pdftex.def)             Requested size: 227.64894pt x 227.64877pt.
- <goodhist.jpg, id=17, 505.1673pt x 505.1673pt>
+ <goodhist.jpg, id=18, 505.1673pt x 505.1673pt>
 File: goodhist.jpg Graphic file (type jpg)
 
 <use goodhist.jpg>
 Package pdftex.def Info: goodhist.jpg used on input line 138.
 (pdftex.def)             Requested size: 227.64894pt x 227.64693pt.
- [2 <C:/Users/SCH/Documents/git/ecs132-project/firenaivepredict.jpg>] [3 <C:/Us
-ers/SCH/Documents/git/ecs132-project/badhist.jpg> <C:/Users/SCH/Documents/git/e
-cs132-project/goodhist.jpg>]
-<goodfiresowndat.jpg, id=26, 505.1673pt x 505.1673pt>
+ [2 <./firenaivepredict.jpg>] [3 <./badhist.jpg> <./goodhist.jpg>] <goodfiresow
+ndat.jpg, id=27, 505.1673pt x 505.1673pt>
 File: goodfiresowndat.jpg Graphic file (type jpg)
 
 <use goodfiresowndat.jpg>
 Package pdftex.def Info: goodfiresowndat.jpg used on input line 280.
 (pdftex.def)             Requested size: 227.64894pt x 227.64693pt.
 
-<goodfiresalldat.jpg, id=27, 1025.5113pt x 556.479pt>
+<goodfiresalldat.jpg, id=28, 1025.5113pt x 556.479pt>
 File: goodfiresalldat.jpg Graphic file (type jpg)
 
 <use goodfiresalldat.jpg>
 Package pdftex.def Info: goodfiresalldat.jpg used on input line 288.
 (pdftex.def)             Requested size: 227.64894pt x 123.5296pt.
- [4] [5 <C:/Users/SCH/Documents/git/ecs132-project/goodfiresowndat.jpg> <C:/Use
-rs/SCH/Documents/git/ecs132-project/goodfiresalldat.jpg>] <r2knn.jpg, id=34, 48
-1.8pt x 481.8pt>
+ [4] [5 <./goodfiresowndat.jpg> <./goodfiresalldat.jpg>] <r2knn.jpg, id=35, 481
+.8pt x 481.8pt>
 File: r2knn.jpg Graphic file (type jpg)
  <use r2knn.jpg>
-Package pdftex.def Info: r2knn.jpg used on input line 367.
+Package pdftex.def Info: r2knn.jpg used on input line 368.
 (pdftex.def)             Requested size: 202.3529pt x 202.34726pt.
 
-<freq.jpg, id=35, 653.44125pt x 486.81876pt>
+<freq.jpg, id=36, 653.44125pt x 486.81876pt>
 File: freq.jpg Graphic file (type jpg)
  <use freq.jpg>
-Package pdftex.def Info: freq.jpg used on input line 393.
+Package pdftex.def Info: freq.jpg used on input line 394.
 (pdftex.def)             Requested size: 240.30083pt x 179.02074pt.
 
-<area.jpg, id=36, 653.44125pt x 486.81876pt>
+<area.jpg, id=37, 653.44125pt x 486.81876pt>
 File: area.jpg Graphic file (type jpg)
  <use area.jpg>
-Package pdftex.def Info: area.jpg used on input line 400.
+Package pdftex.def Info: area.jpg used on input line 401.
 (pdftex.def)             Requested size: 240.30083pt x 179.02074pt.
- [6 <C:/Users/SCH/Documents/git/ecs132-project/r2knn.jpg>]
+ [6 <./r2knn.jpg>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7 <C:/Users/SCH/Documents/git/ecs132-project/freq.jpg> <C:/Users/SCH/Documents
-/git/ecs132-project/area.jpg>]
-<knn_prop_pred.jpg, id=44, 3440.855pt x 2019.545pt>
-File: knn_prop_pred.jpg Graphic file (type jpg)
- <use knn_prop_pred.jpg>
-Package pdftex.def Info: knn_prop_pred.jpg used on input line 552.
-(pdftex.def)             Requested size: 202.3529pt x 118.76384pt.
 
-[8] [9 <C:/Users/SCH/Documents/git/ecs132-project/knn_prop_pred.jpg>] [10]
-<forestfire.jpg, id=56, 481.8pt x 481.8pt>
+Underfull \hbox (badness 10000) in paragraph at lines 502--508
+
+ []
+
+[7 <./freq.jpg> <./area.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 528--534
+
+ []
+
+[8] <knn_prop_pred.jpg, id=50, 3440.855pt x 2019.545pt>
+File: knn_prop_pred.jpg Graphic file (type jpg)
+
+<use knn_prop_pred.jpg>
+Package pdftex.def Info: knn_prop_pred.jpg used on input line 577.
+(pdftex.def)             Requested size: 202.3529pt x 118.76384pt.
+ [9 <./knn_prop_pred.jpg>] [10]
+<forestfire.jpg, id=57, 481.8pt x 481.8pt>
 File: forestfire.jpg Graphic file (type jpg)
  <use forestfire.jpg>
-Package pdftex.def Info: forestfire.jpg used on input line 623.
+Package pdftex.def Info: forestfire.jpg used on input line 659.
 (pdftex.def)             Requested size: 404.71353pt x 404.72394pt.
- [11 <C:/Users/SCH/Documents/git/ecs132-project/forestfire.jpg>]
-<parkinson.jpg, id=60, 481.8pt x 481.8pt>
+ [11 <./forestfire.jpg>] <parkinson.jpg, id=61, 481.8pt x 481.8pt>
 File: parkinson.jpg Graphic file (type jpg)
  <use parkinson.jpg>
-Package pdftex.def Info: parkinson.jpg used on input line 632.
+Package pdftex.def Info: parkinson.jpg used on input line 668.
 (pdftex.def)             Requested size: 404.71353pt x 404.72394pt.
- [12 <C:/Users/SCH/Documents/git/ecs132-project/parkinson.jpg>]
-<knn_good_whole.jpg, id=64, 481.8pt x 481.8pt>
+ [12 <./parkinson.jpg>] <knn_good_whole.jpg, id=65, 481.8pt x 481.8pt>
 File: knn_good_whole.jpg Graphic file (type jpg)
- <use knn_good_whole.jpg>
-Package pdftex.def Info: knn_good_whole.jpg used on input line 641.
-(pdftex.def)             Requested size: 227.64894pt x 227.64435pt.
 
-<knn_good_own.jpg, id=65, 481.8pt x 481.8pt>
+<use knn_good_whole.jpg>
+Package pdftex.def Info: knn_good_whole.jpg used on input line 677.
+(pdftex.def)             Requested size: 227.64894pt x 227.64435pt.
+ <knn_good_own.jpg, id=66, 481.8pt x 481.8pt>
 File: knn_good_own.jpg Graphic file (type jpg)
- <use knn_good_own.jpg>
-Package pdftex.def Info: knn_good_own.jpg used on input line 649.
+
+<use knn_good_own.jpg>
+Package pdftex.def Info: knn_good_own.jpg used on input line 685.
 (pdftex.def)             Requested size: 209.94095pt x 209.94153pt.
- [13 <C:/Users/SCH/Documents/git/ecs132-project/knn_good_whole.jpg> <C:/Users/S
-CH/Documents/git/ecs132-project/knn_good_own.jpg>]
-<knn_good_all.jpg, id=70, 481.8pt x 481.8pt>
+ [13 <./knn_good_whole.jpg> <./knn_good_own.jpg>]
+<knn_good_all.jpg, id=71, 481.8pt x 481.8pt>
 File: knn_good_all.jpg Graphic file (type jpg)
  <use knn_good_all.jpg>
-Package pdftex.def Info: knn_good_all.jpg used on input line 659.
+Package pdftex.def Info: knn_good_all.jpg used on input line 695.
 (pdftex.def)             Requested size: 202.3529pt x 202.34726pt.
-
-(C:\Users\SCH\Documents\git\ecs132-project\p1.R
+ (./p1.R
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 2.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/bx/n' in size <10> not available
 (Font)              Font shape `OML/cmm/b/it' tried instead on input line 2.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 2.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2.
- [14 <C:/Users/SCH/Documents/git/ecs132-project/knn_good_all.jpg>]
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 60.
+ [14 <./knn_good_all.jpg>]
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 77.
- [15]
-Overfull \hbox (22.11537pt too wide) in paragraph at lines 107--108
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 37.
+
+Overfull \hbox (22.11537pt too wide) in paragraph at lines 68--69
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-LaTeX Font Info:    Font shape `OML/cmr/m/it' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 127.
-[16]
+[15]) (./p2.R
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 22.
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 137.
-
-Overfull \hbox (4.11519pt too wide) in paragraph at lines 141--142
-[][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (58.11574pt too wide) in paragraph at lines 177--178
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[17]
-Missing character: There is no â in font cmti10!
-Missing character: There is no € in font cmti10!
-Missing character: There is no ˜ in font cmti10!
-Missing character: There is no â in font cmti10!
-Missing character: There is no € in font cmti10!
-Missing character: There is no ™ in font cmti10!
-Missing character: There is no â in font cmti10!
-Missing character: There is no € in font cmti10!
-Missing character: There is no ˜ in font cmti10!
-Missing character: There is no â in font cmti10!
-Missing character: There is no € in font cmti10!
-Missing character: There is no ™ in font cmti10!
-Missing character: There is no â in font cmti10!
-Missing character: There is no € in font cmti10!
-Missing character: There is no ˜ in font cmti10!
-Missing character: There is no â in font cmti10!
-Missing character: There is no € in font cmti10!
-Missing character: There is no ™ in font cmti10!
-Missing character: There is no â in font cmti10!
-Missing character: There is no € in font cmti10!
-Missing character: There is no ˜ in font cmti10!
-Missing character: There is no â in font cmti10!
-Missing character: There is no € in font cmti10!
-Missing character: There is no ™ in font cmti10!
-Missing character: There is no â in font cmti10!
-Missing character: There is no € in font cmti10!
-Missing character: There is no ˜ in font cmti10!
-Missing character: There is no â in font cmti10!
-Missing character: There is no € in font cmti10!
-Missing character: There is no ™ in font cmti10!
-
-Overfull \hbox (304.11824pt too wide) in paragraph at lines 206--207
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][] 
- []
-
-) (C:\Users\SCH\Documents\git\ecs132-project\p2.R [18])
-Overfull \hbox (484.12007pt too wide) in paragraph at lines 64--669
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 27.
+)
+Overfull \hbox (484.12007pt too wide) in paragraph at lines 27--705
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[19] (C:\Users\SCH\Documents\git\ecs132-project\project.aux) ) 
+[16] (./project.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 5956 strings out of 494045
- 83424 string characters out of 3145975
- 234994 words of memory out of 3000000
- 9163 multiletter control sequences out of 15000+200000
+ 6272 strings out of 493488
+ 89053 string characters out of 3141326
+ 227571 words of memory out of 3000000
+ 9468 multiletter control sequences out of 15000+200000
  12630 words of font info for 49 fonts, out of 3000000 for 9000
- 715 hyphenation exceptions out of 8191
- 36i,10n,43p,274b,2131s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x
-86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86
-)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files (x86)/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files (x86)/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmtt10.pfb>
-Output written on project.pdf (19 pages, 2134219 bytes).
+ 957 hyphenation exceptions out of 8191
+ 38i,10n,43p,288b,2131s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pf
+b></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></us
+r/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></us
+r/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
+local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
+cal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loca
+l/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/t
+exlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texl
+ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
+ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
+/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/
+2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on project.pdf (16 pages, 2104059 bytes).
 PDF statistics:
- 142 PDF objects out of 1000 (max. 8388607)
+ 134 PDF objects out of 1000 (max. 8388607)
+ 85 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -448,7 +448,7 @@ frequency of fires. Are some areas of the park more heavily used for campfires?
 Could the presence of many fires in the past lead to the smaller mean area in
 areas with a high frequency of fires or is that trend only because fires tend
 to be small in the first place? Much to our dismay, this seeming gold mine of
-information could not be excavated, as our data is spread much to thin to
+information could not be excavated, as our data is spread much too thin to
 examine individual regions.
 
 \section{Parkinson's disease}
@@ -534,7 +534,13 @@ ran cross-validation to figure out if the predictor set of both of them
 together is any good. Using our cross-validation function \verb+cvglmprop+
 that is included in p2.R which returns the proportion of cases that were
 predicted correctly, and found that we correctly predicted a patient's
-status 85.12577\% of the time.
+status 85.12577\% of the time. The model using both spread 1 and PPE together.\\
+
+\begin{equation}
+\label{logit2}
+m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(9.292+1.618
+t_1 + 10.760t_2)}}
+\end{equation}
 
 We then tried each predictor variable by themselves and ran cross-validation
 on that model. First, using PPE we got that 85.46082\% we are predicting
@@ -554,12 +560,34 @@ and ran it through the cross-validation and got 84.97113\% the model predicted
 correctly which is worse than we had before. Then, we thought adding $spread1^{2}$
 as the interaction term might lead to better results but again we did not see
 improvement with 85.11031\% predicted correctly. We then went ahead and
-tried $PPE^{2}$ as an interaction term and the model predicted 85.02371\% correctly.
+tried $PPE^{2}$ as an interaction term and the model predicted 85.02371\% correctly.\\
+
+The model with the interaction term $PPE \times spread 1$:
+
+\begin{equation}
+\label{logit2}
+m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(10.449+1.896
+t_1 - 7.230t_2 - 3.563t_1t_2)}}
+\end{equation}
+
+The model with the interaction term $spread1^{2}$:
+\begin{equation}
+\label{logit2}
+m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(-1.9284 - 1.7461
+t_1 + 12.9264t_2 - 0.2573t_1^2)}}
+\end{equation}
+
+The model with the interaction term $PPE^{2}$:
+\begin{equation}
+\label{logit2}
+m_{Y;X}(t) = P(Y = 1 | X = t) = \frac{1}{1+e^{-(5.928 + 1.349
+t_1 + 28.907t_2 - 43.498t_2^2)}}
+\end{equation}
 
 \subsection{Final predictor set}
 
 After testing various predictor selection we decided to stick with a
-simple model of spread 1 as our only predictor variable.
+simple model of just spread 1 as our only predictor variable.
 
 The equation for our model is:
 \begin{equation}
@@ -569,9 +597,17 @@ t_1)}}
 \end{equation}
 
 When this regression model is ran through cross-validation 85.4732\%
-were predicted correctly.  
+were predicted correctly. We think this model is the best model for classifying the Parkinson status since we did not see any improvement by adding other predictor variables or adding interaction terms. Also, we do not think we have to worry about independence in this case 
+because our model has only one predictor variable.  
 
 \subsection{Nonparametric Analysis}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{knn_prop_pred.jpg}
+  \caption{Proportion of Successful Predictions versus Number of Neighbors used in Nearest-Neighbor.}
+  \label{fig:knn_parkinson}
+\end{figure}
 
 For the nonparametric analysis we decided to use the nearest-neighbor function
 that was provided by Professor Matloff. We then went ahead and created two
@@ -580,13 +616,8 @@ and we decided that our training set would be 150 values and 45 values will be
 the validation set. Then, we used the sample function to sample a training and
 validation set then using these sets we ran knn and and found the proportion of
 successes. We decided to keep the size of our training and validation set
-constant while changing k and achieved the following graph.
+constant while changing k and achieved the graph in Figure \ref{fig:knn_parkinson}.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.4\textwidth]{knn_prop_pred.jpg}
-  \caption{Proportion of Successful Predictions versus Number of Neighbors used in Nearest-Neighbor.}
-\end{figure}
 
 By looking at our data we decided to choose that k being equal to 15 gave us
 the best outcome with a proportion of 0.8445889 being predicted correctly. By
